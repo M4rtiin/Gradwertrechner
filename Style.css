@@ -1,8 +1,29 @@
+
+body {
+
+}
+
 button {
 	color:green;
 	border-radius: 20px;
 }
 
-body {
-	background-color: yellow;
+#Umfangstyle {
+	background-color: #4682B4
+}
+
+#Gradstyle {
+	background-color: #FFA07A
+}
+
+#S {
+	background-color:  #00FA9A
+}
+
+input {
+	background-color: #ffffff
+}
+
+#Umfangstyle, #Gradstyle {
+	padding-left: 10px
 }
