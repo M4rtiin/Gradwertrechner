@@ -14,17 +14,18 @@ function Berechnen(){
   var divergebnis = Math.round(diverenz*10)/10;
 //Umfanganzeige
   document.getElementById("U").innerHTML ="U="+ Umfang +"mm";
-//Gradanzeige
-  var div = document.getElementById("S");
-  var createE = document.createElement("p");
-  createE.innerHTML = werteingabe + "° = " + ergebnis + "mm";
-  div.appendChild(createE);
 //diverenzanzeige
+  var div = document.getElementById("S");
   var createB = document.createElement("p");
   createB.innerHTML = gradspeicher[gradspeicher.length-2]+"° --> " + werteingabe + "° = " + divergebnis + "mm";
   div.appendChild(createB);
-console.log(speicher);
-console.log(speicher.length);
+//Gradanzeige
+  var createE = document.createElement("p");
+  createE.innerHTML = werteingabe + "° = " + ergebnis + "mm";
+  div.appendChild(createE);
+//debug
+  console.log(speicher);
+  console.log(speicher.length);
 }
 //Speicher für Diverenzberechnung und Anzeige
   var speicher = [];
