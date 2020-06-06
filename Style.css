@@ -18,12 +18,16 @@ button {
 
 #S {
 	background-color:  #00FA9A
+
 }
 
 input {
 	background-color: #ffffff
 }
 
-#Umfangstyle, #Gradstyle {
-	padding-left: 10px
+#Umfangstyle, #Gradstyle, #S {
+   padding-left: 10px;
+	 padding-top: 5px;
+	 padding-bottom: 5px;
+	 padding-right: 10px;
 }
