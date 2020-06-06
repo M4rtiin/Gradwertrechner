@@ -23,6 +23,10 @@ function Berechnen(){
   var createE = document.createElement("p");
   createE.innerHTML = werteingabe + "° = " + ergebnis + "mm";
   div.appendChild(createE);
+//Abgrenzung
+  var createA = document.createElement("p");
+  createA.innerHTML = "---------------------";
+  div.appendChild(createA);
 //debug
   console.log(speicher);
   console.log(speicher.length);
