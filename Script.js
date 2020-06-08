@@ -65,10 +65,10 @@ function drehzahlberechnung(){
   //Anzeige
   durchmessera.innerHTML = "Bohrerdurchmesser = "+durchmesser;
   if (edelstahl===true) {
-    drehzahla.innerHTML = "Bohrerdrehzahl = "+vadrehzahl;
+    drehzahla.innerHTML = "Bohrerdrehzahl = "+vadrehzahl+" U/min";
   }
   else if (stahl===true) {
-    drehzahla.innerHTML = "Bohrerdrehzahl = "+h2drehzahl;
+    drehzahla.innerHTML = "Bohrerdrehzahl = "+h2drehzahl+" U/min";
   }
   else {
     drehzahla.innerHTML = "Bitte Material auswählen!";
