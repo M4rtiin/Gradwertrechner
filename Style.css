@@ -2,53 +2,51 @@
 body {
 
 }
-
 #header {
   background: linear-gradient(45deg, #0000FF, #008000);
   border-radius: 50px;
 }
-
 #header a:hover {
 	color: white;
 }
-
 #header a {
 	color: black;
 }
-
 #nav {
 	padding-top: 20px;
 	padding-left: 20px;
 	padding-bottom: 20px;
 	padding-right: 40px;
 }
-
 button {
 	color:green;
 	border-radius: 20px;
 }
-
 #Umfangstyle {
 	background-color: #4682B4;
 }
-
 #Gradstyle {
 	background-color: #FFA07A;
 }
-
 #Anzeige {
 	background-color:  #00FA9A;
   font-size: 20px;
 }
-
 input {
 	background-color: #ffffff;
 	height: 25px;
 }
-
-#Umfangstyle, #Gradstyle, #Anzeige {
+#Umfangstyle, #Gradstyle, #Anzeige, #bohrerd {
    padding-left: 10px;
 	 padding-top: 5px;
 	 padding-bottom: 5px;
 	 padding-right: 10px;
+}
+/*Bohrerstyle*/
+#bohrerd {
+	 background-color: #4682B4;
+}
+#bohrerdrehzahlanzeige {
+	 background-color:  #00FA9A;
+   font-size: 20px;
 }

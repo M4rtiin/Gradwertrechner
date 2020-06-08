@@ -1,4 +1,5 @@
 
+//Gradwertrechner
 
 function Berechnen(){
 //Eingebefelder
@@ -48,3 +49,9 @@ function Berechnen(){
 //Speicher für Diverenzberechnung und Anzeige
   var speicher = [];
   var gradspeicher = [];
+
+//Bohrerdrehzahlrechner
+
+function drehzahlberechnung(){
+  
+}

@@ -7,10 +7,23 @@
   <title>Gradrechner</title>
  </head>
  <body>
-  <div id="Header">
+  <div id="header">
    <ul id="nav">
     <li><h2><a href="index.html">Gradwertrechner</a><h2></li>
     <li><h2><a href="bohrer.html">Bohrerdrehzahlrechner</a></h2></il>
    </ul>
   </div>
+<!--Bohrerdurchmessereingabe-->
+  <div id="bohrerd">
+    <h2>Gib deinen Bohrerdurchmesser ein:</h2>
+    <input type="text" placeholder="Bohrerdurchmesser" id="bohrereingabe">
+    <button onclick="drehzahlberechnung">Berechnen</button> <br>
+    <input type="checkbox" id="va">
+    <label for="va">Edelstahl</label><br>
+    <input type="checkbox" id="h2">
+    <label for="h2">H2 Stahl</label>
+    <p id="durchmesseranzeige"> </p>
+  </div>
+<!--bohrerdrehzahlanzeige-->
+  <div id="bohrerdrehzahleanzeige"> </div>
 </html>
