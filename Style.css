@@ -36,14 +36,14 @@ input {
 	background-color: #ffffff;
 	height: 25px;
 }
-#Umfangstyle, #Gradstyle, #Anzeige, #bohrerd {
+#Umfangstyle, #Gradstyle, #Anzeige, #bohrerd, #Materialeingabe, #bohrerdrehzahlanzeige {
    padding-left: 10px;
 	 padding-top: 5px;
 	 padding-bottom: 5px;
 	 padding-right: 10px;
 }
 /*Bohrerstyle*/
-#bohrerd {
+#bohrerd, #Materialeingabe {
 	 background-color: #4682B4;
 }
 #bohrerdrehzahlanzeige {
