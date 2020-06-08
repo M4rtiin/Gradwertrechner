@@ -17,7 +17,7 @@ function Berechnen(){
 
  if (speicher.length===1) {
 //Gradanzeige
-   var div = document.getElementById("S");
+   var div = document.getElementById("Anzeige");
    var createE = document.createElement("p");
    createE.innerHTML = werteingabe + "° = " + ergebnis + "mm";
    div.appendChild(createE);
@@ -28,7 +28,7 @@ function Berechnen(){
     }
  else {
 //diverenzanzeige
-    var div = document.getElementById("S");
+    var div = document.getElementById("Anzeige");
     var createB = document.createElement("p");
     createB.innerHTML = gradspeicher[gradspeicher.length-2]+"° --> " + werteingabe + "° = " + divergebnis + "mm";
     div.appendChild(createB);

@@ -3,6 +3,18 @@ body {
 
 }
 
+#Header {
+  background: linear-gradient(45deg, #0000FF, #008000);
+  border-radius: 50px;
+}
+
+#nav {
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-bottom: 20px;
+	padding-right: 40px;
+}
+
 button {
 	color:green;
 	border-radius: 20px;
@@ -16,7 +28,7 @@ button {
 	background-color: #FFA07A;
 }
 
-#S {
+#Anzeige {
 	background-color:  #00FA9A;
   font-size: 20px;
 }
@@ -25,7 +37,7 @@ input {
 	background-color: #ffffff;
 }
 
-#Umfangstyle, #Gradstyle, #S {
+#Umfangstyle, #Gradstyle, #Anzeige {
    padding-left: 10px;
 	 padding-top: 5px;
 	 padding-bottom: 5px;
