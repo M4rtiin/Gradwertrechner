@@ -60,8 +60,8 @@ function drehzahlberechnung(){
   var durchmessera = document.getElementById("durchmesseranzeige");
   var drehzahla = document.getElementById("bohrerdrehzahlanzeige");
   //Berechnung
-  var vadrehzahl = Math.round(10*1000)/(durchmesser*3.14);
-  var h2drehzahl = Math.round(20*1000)/(durchmesser*3.14);
+  var vadrehzahl = Math.round((10*1000)/(durchmesser*3.14));
+  var h2drehzahl = Math.round((20*1000)/(durchmesser*3.14));
   //Anzeige
   durchmessera.innerHTML = "Bohrerdurchmesser = "+durchmesser;
   if (edelstahl===true) {
