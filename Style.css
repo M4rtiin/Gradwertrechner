@@ -3,9 +3,17 @@ body {
 
 }
 
-#Header {
+#header {
   background: linear-gradient(45deg, #0000FF, #008000);
   border-radius: 50px;
+}
+
+#header a:hover {
+	color: white;
+}
+
+#header a {
+	color: black;
 }
 
 #nav {
@@ -35,6 +43,7 @@ button {
 
 input {
 	background-color: #ffffff;
+	height: 25px;
 }
 
 #Umfangstyle, #Gradstyle, #Anzeige {
