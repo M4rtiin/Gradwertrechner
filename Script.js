@@ -81,6 +81,19 @@ console.log(edelstahl);
 
 //Kernlochrechner
 
-function Kernlochrechner(){
-  
+function kernlochrechner(){
+  //Eingabe
+  var gewindee = document.getElementById("gewindeeingabe").value;
+  var gewindea = document.getElementById("gewindeanzeige");
+  var kernlocha = document.getElementById("kernlochanzeige");
+  var speicher = [0.75,1.6,2.5,3.3,4.2,5.0,0,6.8,0,8.5,0,10.2,0,12,0,14,0,0,0,
+                  17.5,0,0,0,21,0,0,0,0,0,26.5,0,0,0,0,0,32,0,0,0,0,0,37.5];
+  //Gewindeanzeige
+  gewindea.innerHTML = "M"+gewindee+" Gewinde";
+  //Kernlochberechnung
+  for (var i = 0; i < 43; i++) {
+    if (gewindee == i) {
+      kernlocha.innerHTML = "Kernlochdurchmesser = "+speicher[i-1]+"mm";
+    }
+  }
 }
