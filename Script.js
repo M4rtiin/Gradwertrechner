@@ -61,7 +61,7 @@ function drehzahlberechnung(){
   var drehzahla = document.getElementById("bohrerdrehzahlanzeige");
   //Berechnung
   var vadrehzahl = Math.round((10*1000)/(durchmesser*3.14));
-  var h2drehzahl = Math.round((20*1000)/(durchmesser*3.14));
+  var h2drehzahl = Math.round((18*1000)/(durchmesser*3.14));
   //Anzeige
   durchmessera.innerHTML = "Bohrerdurchmesser = "+durchmesser;
   if (edelstahl===true) {
@@ -77,4 +77,10 @@ function drehzahlberechnung(){
 console.log(vadrehzahl);
 console.log(h2drehzahl);
 console.log(edelstahl);
+}
+
+//Kernlochrechner
+
+function Kernlochrechner(){
+  
 }

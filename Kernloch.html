@@ -14,21 +14,12 @@
     <li><h2><a href="Kernloch.html">Kernlochrechner</a></h2></il>
    </ul>
   </div>
-  <!-- Umfangeingabe -->
-  <div id="Umfangstyle">
-   <h2>Gib deinen Umfang ein:</h2>
-   <input type="text" placeholder="Umfang" id="Umfang">
-   <p id="U"> </p>
+  <!--Gewindeeingabe-->
+  <div id="gewinde">
+    <h2>Gib dein metrisches Gewinde ein:</h2>
+    <input type="text" placeholder="metrisches Gewinde" id="gewindeeingabe">
+    <button type="button" onclick="kernlochrechner()">Berechnen</button><br>
+    <p id="gewindeanzeige"></p>
   </div>
-  <!-- Gradwerteeingabe -->
-  <div id="Gradstyle">
-   <h2>Gib deine zu berechnende Gradzahl ein:</h2>
-   <input type="text" placeholder="Gradwerte" id="Gradwerte">
-   <!--Berechnungsbutton-->
-   <button onclick="Berechnen()">Berechnen</button>
-   <br><br>
-  </div>
-  <!--Anzeige-->
-  <div id="Anzeige"> </div>
- </body>
-</html>
+  <!--Kernlochanzeige-->
+  <div id="kernlochanzeige"></div>
