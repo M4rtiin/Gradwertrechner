@@ -93,7 +93,10 @@ function kernlochrechner(){
   //Kernlochberechnung
   for (var i = 0; i < 43; i++) {
     if (gewindee == i) {
-      kernlocha.innerHTML = "Kernlochdurchmesser = "+speicher[i-1]+"mm";
-    }
+      if (speicher[i-1]===0)
+        kernlocha.innerHTML = "Metrischesgewinde nicht gefunden!";
+      else
+        kernlocha.innerHTML = "Kernlochdurchmesser = "+speicher[i-1]+"mm";
+    }    
   }
 }
