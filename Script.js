@@ -94,9 +94,9 @@ function kernlochrechner(){
   for (var i = 0; i < 43; i++) {
     if (gewindee == i) {
       if (speicher[i-1]===0)
-        kernlocha.innerHTML = "Metrischesgewinde nicht gefunden!";
+        kernlocha.innerHTML = "Metrisches ISO-Gewinde nicht gefunden!";
       else
         kernlocha.innerHTML = "Kernlochdurchmesser = "+speicher[i-1]+"mm";
-    }    
+    }
   }
 }

@@ -1,6 +1,6 @@
 
 body {
-  background-color: #D3D3D3;
+  background-color: #2c2c2c;
 }
 #header {
   background: linear-gradient(45deg, #0000FF, #008000);
@@ -22,22 +22,21 @@ button {
 	color:green;
 	border-radius: 20px;
 }
-#Umfangstyle, #bohrerd, #gewinde {
-	background-color: #4682B4;
+#Eingabe1 {
+	background-color: #0000FF;
 }
-#Gradstyle, #Materialeingabe {
-	background-color: #FFA07A;
+#Eingabe2 {
+	background-color: #f06718;
 }
-#Anzeige, #bohrerdrehzahlanzeige, #kernlochanzeige {
-	background-color:  #00FA9A;
+#Anzeige {
+	background-color:  #008000;
   font-size: 20px;
 }
 input {
 	background-color: #ffffff;
 	height: 25px;
 }
-#Umfangstyle, #Gradstyle, #Anzeige, #bohrerd, #Materialeingabe, #bohrerdrehzahlanzeige,
-#gewinde, #kernlochanzeige {
+#Anzeige, #Eingabe1, #Eingabe2 {
    padding-left: 10px;
 	 padding-top: 5px;
 	 padding-bottom: 5px;
