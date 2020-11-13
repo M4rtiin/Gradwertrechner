@@ -100,3 +100,62 @@ function kernlochrechner(){
     }
   }
 }
+
+//Anzugsdrehmoment
+
+function anzugsdrehmoment(){
+  //Eingabe
+  var schraubene = document.getElementById("schraubeneingabe").value;
+  var schraubena = document.getElementById("schraubengröße");
+  var drehmomenta = document.getElementById("drehmomentanzeige");
+  var s5_6 = document.getElementById("s5_6").checked;
+  var s8_8 = document.getElementById("s8_8").checked;
+  var s10_9 = document.getElementById("s10_9").checked;
+  var s12_9 = document.getElementById("s12_9").checked;
+  var speicher5_6 = [0,0,0,1.36,2.7,4.6,0,11,0,22,0,39,0,62,0,95,0,130,0,184,
+                     0,250,0,315,0,0,470,0,0,635,0,0,865,0,0,1140];
+  var speicher8_8 = [0,0,0,3,5.9,10,0,25,0,49,0,85,0,135,0,210,0,300,0,425,0,
+                     580,0,730,0,0,1100,0,0,1450,0,0,2000,0,0,2600];
+  var speicher10_9 = [0,0,0,4.4,8.7,15,0,36,0,72,0,125,0,200,0,310,0,430,0,610,
+                      0,830,0,1050,0,0,1550,0,0,2100,0,0,2800,0,0,3700];
+  var speicher12_9 = [0,0,0,5.1,10,18,0,43,0,84,0,145,0,235,0,365,0,500,0,710,
+                      0,970,0,1220,0,0,1800,0,0,2450,0,0,3400,0,0,4300];
+  //Schraubenanzeige
+  schraubena.innerHTML = "M"+schraubene+" Schraube";
+  //Drehmoment Berechnung
+  for (var i = 0; i < 37; i++){
+    if (schraubene == i){
+      if (s5_6 === true){
+        if (speicher5_6[i-1] === 0)
+        drehmomenta.innerHTML = "Schraube nicht gefunden!";
+        else
+        drehmomenta.innerHTML = speicher5_6[i-1]+"Nm";
+      }
+      else if (s8_8 === true){
+        if (speicher8_8[i-1] === 0)
+        drehmomenta.innerHTML = "Schraube nicht gefunden!";
+        else
+        drehmomenta.innerHTML = speicher8_8[i-1]+"Nm";
+      }
+      else if (s10_9 === true){
+        if (speicher10_9[i-1] === 0)
+        drehmomenta.innerHTML = "Schraube nicht gefunden!";
+        else
+        drehmomenta.innerHTML = speicher10_9[i-1]+"Nm";
+      }
+      else if (s12_9 === true){
+        if (speicher12_9[i-1] === 0)
+        drehmomenta.innerHTML = "Schraube nicht gefunden!";
+        else
+        drehmomenta.innerHTML = speicher12_9[i-1]+"Nm";
+      }
+      else
+       drehmomenta.innerHTML = "Bitte Fertigungsklasse wählen!";
+    }
+  }
+  //debug
+  console.log(schraubene);
+  console.log(schraubena);
+  console.log(drehmomenta);
+
+}
