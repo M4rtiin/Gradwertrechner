@@ -21,6 +21,8 @@ body {
 button {
 	color:green;
 	border-radius: 20px;
+  height: 40px;
+  width: 90px;
 }
 #Eingabe1 {
 	background-color: #0000FF;
@@ -31,10 +33,6 @@ button {
 #Anzeige {
 	background-color:  #008000;
   font-size: 20px;
-}
-input {
-	background-color: #ffffff;
-	height: 25px;
 }
 #Anzeige, #Eingabe1, #Eingabe2 {
    padding-left: 10px;

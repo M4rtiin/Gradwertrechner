@@ -1,6 +1,5 @@
 
 //Gradwertrechner
-
 function Berechnen(){
   //Eingebefelder
   var Umfang = document.getElementById("Umfang").value;
@@ -51,7 +50,6 @@ function Berechnen(){
   var gradspeicher = [];
 
 //Bohrerdrehzahlrechner
-
 function drehzahlberechnung(){
   //Eingabefeld
   var durchmesser = document.getElementById("bohrereingabe").value;
@@ -80,7 +78,6 @@ console.log(edelstahl);
 }
 
 //Kernlochrechner
-
 function kernlochrechner(){
   //Eingabe
   var gewindee = document.getElementById("gewindeeingabe").value;
@@ -102,7 +99,6 @@ function kernlochrechner(){
 }
 
 //Anzugsdrehmoment
-
 function anzugsdrehmoment(){
   //Eingabe
   var schraubene = document.getElementById("schraubeneingabe").value;
@@ -123,7 +119,7 @@ function anzugsdrehmoment(){
   //Schraubenanzeige
   schraubena.innerHTML = "M"+schraubene+" Schraube";
   //Drehmoment Berechnung
-  for (var i = 0; i < 37; i++){
+  for (var i = 0; i < 38; i++){
     if (schraubene == i){
       if (s5_6 === true){
         if (speicher5_6[i-1] === 0)
@@ -157,5 +153,4 @@ function anzugsdrehmoment(){
   console.log(schraubene);
   console.log(schraubena);
   console.log(drehmomenta);
-
 }
