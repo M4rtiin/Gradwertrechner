@@ -154,3 +154,35 @@ function anzugsdrehmoment(){
   console.log(schraubena);
   console.log(drehmomenta);
 }
+
+//Blech-Gewicht-rechner
+function gewichtrechner() {
+  //Eingabe
+  var bleche = document.getElementById("blechabmaße");
+  var gewichta = document.getElementById("gewichtanzeige");
+  var breite = document.getElementById("blechbreite").value;
+  var länge = document.getElementById("blechlänge").value;
+  var dicke = document.getElementById("blechdicke").value;
+  var va = document.getElementById("vag").checked;
+  var h2 = document.getElementById("h2g").checked;
+  //Anzeige der Blechabmaße
+  bleche.innerHTML = breite + " X " + länge + " X " + dicke;
+  //Gewicht brechnung
+  var volumen = breite*länge*dicke;
+  var v_in_dm = volumen/1000000;
+  if (va === true) {
+    var va_gewicht = v_in_dm*8;
+    gewichta.innerHTML = "Das Gewicht des Bleches beträgt "+va_gewicht+" Kilogramm";
+  }
+  else if (h2 === true) {
+    var h2_gewicht = v_in_dm*7.85;
+    gewichta.innerHTML = "Das Gewicht des Bleches beträgt "+h2_gewicht+" Kilogramm";
+  }
+  else
+    gewichta.innerHTML = "Bitte Material angeben!";
+  //debug
+  console.log (v_in_dm);
+  console.log (volumen);
+  console.log (va_gewicht);
+  console.log (h2_gewicht);
+}
