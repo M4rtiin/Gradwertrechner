@@ -171,11 +171,11 @@ function gewichtrechner() {
   var volumen = breite*länge*dicke;
   var v_in_dm = volumen/1000000;
   if (va === true) {
-    var va_gewicht = v_in_dm*8;
+    var va_gewicht = Math.round(v_in_dm*8*1000)/1000;
     gewichta.innerHTML = "Das Gewicht des Bleches beträgt "+va_gewicht+" Kilogramm";
   }
   else if (h2 === true) {
-    var h2_gewicht = v_in_dm*7.85;
+    var h2_gewicht = Math.round(v_in_dm*7.85*1000)/1000;
     gewichta.innerHTML = "Das Gewicht des Bleches beträgt "+h2_gewicht+" Kilogramm";
   }
   else
