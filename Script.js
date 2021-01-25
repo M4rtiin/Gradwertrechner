@@ -1,6 +1,7 @@
 
 //Gradwertrechner
-function Berechnen(){
+function Berechnen()
+{
   //Eingebefelder
   var Umfang = document.getElementById("Umfang").value;
   var werteingabe = document.getElementById("Gradwerte").value;
@@ -15,7 +16,8 @@ function Berechnen(){
   //Umfanganzeige
   document.getElementById("U").innerHTML ="U="+ Umfang +"mm";
 
- if (speicher.length===1) {
+  if (speicher.length == 1)
+  {
    //Gradanzeige
    var div = document.getElementById("Anzeige");
    var createE = document.createElement("p");
@@ -25,32 +27,34 @@ function Berechnen(){
    var createA = document.createElement("p");
    createA.innerHTML = "---------------------";
    div.appendChild(createA);
-    }
- else {
-    //diverenzanzeige
-    var div = document.getElementById("Anzeige");
-    var createB = document.createElement("p");
-    createB.innerHTML = gradspeicher[gradspeicher.length-2]+"° --> " + werteingabe + "° = " + divergebnis + "mm";
-    div.appendChild(createB);
-    //Gradanzeige
-    var createE = document.createElement("p");
-    createE.innerHTML = werteingabe + "° = " + ergebnis + "mm";
-    div.appendChild(createE);
-    //Abgrenzung
-    var createA = document.createElement("p");
-    createA.innerHTML = "---------------------";
-    div.appendChild(createA);
- }
-    //debug
-    console.log(speicher);
-    console.log(speicher.length);
+  }
+  else
+  {
+   //diverenzanzeige
+   var div = document.getElementById("Anzeige");
+   var createB = document.createElement("p");
+   createB.innerHTML = gradspeicher[gradspeicher.length-2]+"° --> " + werteingabe + "° = " + divergebnis + "mm";
+   div.appendChild(createB);
+   //Gradanzeige
+   var createE = document.createElement("p");
+   createE.innerHTML = werteingabe + "° = " + ergebnis + "mm";
+   div.appendChild(createE);
+   //Abgrenzung
+   var createA = document.createElement("p");
+   createA.innerHTML = "---------------------";
+   div.appendChild(createA);
+  }
+   //debug
+   console.log(speicher);
+   console.log(speicher.length);
 }
   //Speicher für Diverenzberechnung und Anzeige
   var speicher = [];
   var gradspeicher = [];
 
 //Bohrerdrehzahlrechner
-function drehzahlberechnung(){
+function drehzahlberechnung()
+{
   //Eingabefeld
   var durchmesser = document.getElementById("bohrereingabe").value;
   var edelstahl = document.getElementById("va").checked;
@@ -62,13 +66,16 @@ function drehzahlberechnung(){
   var h2drehzahl = Math.round((18*1000)/(durchmesser*3.14));
   //Anzeige
   durchmessera.innerHTML = "Bohrerdurchmesser = "+durchmesser;
-  if (edelstahl===true) {
+  if (edelstahl)
+  {
     drehzahla.innerHTML = "Bohrerdrehzahl = "+vadrehzahl+" U/min";
   }
-  else if (stahl===true) {
+  else if (stahl)
+  {
     drehzahla.innerHTML = "Bohrerdrehzahl = "+h2drehzahl+" U/min";
   }
-  else {
+  else
+  {
     drehzahla.innerHTML = "Bitte Material auswählen!";
   }
 //debug
@@ -78,7 +85,8 @@ console.log(edelstahl);
 }
 
 //Kernlochrechner
-function kernlochrechner(){
+function kernlochrechner()
+{
   //Eingabe
   var gewindee = document.getElementById("gewindeeingabe").value;
   var gewindea = document.getElementById("gewindeanzeige");
@@ -88,18 +96,19 @@ function kernlochrechner(){
   //Gewindeanzeige
   gewindea.innerHTML = "M"+gewindee+" Gewinde";
   //Kernlochberechnung
-  for (var i = 0; i < 43; i++) {
-    if (gewindee == i) {
-      if (speicher[i-1]===0)
-        kernlocha.innerHTML = "Metrisches ISO-Gewinde nicht gefunden!";
-      else
-        kernlocha.innerHTML = "Kernlochdurchmesser = "+speicher[i-1]+"mm";
-    }
+  if (speicher[gewindee-1]==0 || gewindee > speicher.length)
+  {
+    kernlocha.innerHTML = "Metrisches ISO-Gewinde nicht gefunden!";
+  }
+  else
+  {
+    kernlocha.innerHTML = "Kernlochdurchmesser = "+speicher[gewindee-1]+"mm";
   }
 }
 
 //Anzugsdrehmoment
-function anzugsdrehmoment(){
+function anzugsdrehmoment()
+{
   //Eingabe
   var schraubene = document.getElementById("schraubeneingabe").value;
   var schraubena = document.getElementById("schraubengröße");
@@ -119,36 +128,36 @@ function anzugsdrehmoment(){
   //Schraubenanzeige
   schraubena.innerHTML = "M"+schraubene+" Schraube";
   //Drehmoment Berechnung
-  for (var i = 0; i < 38; i++){
-    if (schraubene == i){
-      if (s5_6 === true){
-        if (speicher5_6[i-1] === 0)
+      if (s5_6)
+      {
+        if (speicher5_6[schraubene-1] == 0 || schraubene > speicher5_6.length)
         drehmomenta.innerHTML = "Schraube nicht gefunden!";
         else
-        drehmomenta.innerHTML = speicher5_6[i-1]+"Nm";
+        drehmomenta.innerHTML = speicher5_6[schraubene-1]+"Nm";
       }
-      else if (s8_8 === true){
-        if (speicher8_8[i-1] === 0)
+      else if (s8_8)
+      {
+        if (speicher8_8[schraubene-1] == 0 || schraubene > speicher8_8.length)
         drehmomenta.innerHTML = "Schraube nicht gefunden!";
         else
-        drehmomenta.innerHTML = speicher8_8[i-1]+"Nm";
+        drehmomenta.innerHTML = speicher8_8[schraubene-1]+"Nm";
       }
-      else if (s10_9 === true){
-        if (speicher10_9[i-1] === 0)
+      else if (s10_9)
+      {
+        if (speicher10_9[schraubene-1] == 0 || schraubene > speicher10_9.length)
         drehmomenta.innerHTML = "Schraube nicht gefunden!";
         else
-        drehmomenta.innerHTML = speicher10_9[i-1]+"Nm";
+        drehmomenta.innerHTML = speicher10_9[schraubene-1]+"Nm";
       }
-      else if (s12_9 === true){
-        if (speicher12_9[i-1] === 0)
+      else if (s12_9)
+      {
+        if (speicher12_9[schraubene-1] == 0 || schraubene > speicher12_9.length)
         drehmomenta.innerHTML = "Schraube nicht gefunden!";
         else
-        drehmomenta.innerHTML = speicher12_9[i-1]+"Nm";
+        drehmomenta.innerHTML = speicher12_9[schraubene-1]+"Nm";
       }
       else
        drehmomenta.innerHTML = "Bitte Fertigungsklasse wählen!";
-    }
-  }
   //debug
   console.log(schraubene);
   console.log(schraubena);
@@ -156,7 +165,8 @@ function anzugsdrehmoment(){
 }
 
 //Blech-Gewicht-rechner
-function gewichtrechner() {
+function gewichtrechner()
+{
   //Eingabe
   var bleche = document.getElementById("blechabmaße");
   var gewichta = document.getElementById("gewichtanzeige");
@@ -170,11 +180,13 @@ function gewichtrechner() {
   //Gewicht brechnung
   var volumen = breite*länge*dicke;
   var v_in_dm = volumen/1000000;
-  if (va === true) {
+  if (va)
+  {
     var va_gewicht = Math.round(v_in_dm*8*1000)/1000;
     gewichta.innerHTML = "Das Gewicht des Bleches beträgt "+va_gewicht+" Kilogramm";
   }
-  else if (h2 === true) {
+  else if (h2)
+  {
     var h2_gewicht = Math.round(v_in_dm*7.85*1000)/1000;
     gewichta.innerHTML = "Das Gewicht des Bleches beträgt "+h2_gewicht+" Kilogramm";
   }
@@ -185,4 +197,34 @@ function gewichtrechner() {
   console.log (volumen);
   console.log (va_gewicht);
   console.log (h2_gewicht);
+}
+
+//Kreissegmentbrechnung
+function Kreissegmentbrechnung()
+{
+  // Eingabe
+  var anzeige = document.getElementById("Längenanzeige");
+  var durchmesser = document.getElementById("KreisdurchmesserE").value;
+  var teilung = document.getElementById("KreisteilungE").value;
+
+  //Berechnung
+  var radius = durchmesser / 2;
+  var winkel = 360 / teilung;
+  var bogenmaß = winkel * (Math.PI / 180);
+  var ergebnis = 2 * radius * Math.sin(bogenmaß / 2);
+  var ergebnisGerundet = Math.round(ergebnis*10) / 10;
+  if (ergebnisGerundet == 0 || isNaN(ergebnisGerundet))
+  {
+    anzeige.innerHTML = "Bitte geben Sie ihre Werte an!";
+  }
+  else
+  {
+  anzeige.innerHTML = "Ihr Sehnenmaß beträgt: " + ergebnisGerundet;
+  }
+  // debug
+  console.log(radius);
+  console.log(winkel);
+  console.log(bogenmaß);
+  console.log(Math.sin(bogenmaß));
+  console.log(ergebnisGerundet);
 }
