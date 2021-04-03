@@ -182,12 +182,12 @@ function gewichtrechner()
   var v_in_dm = volumen/1000000;
   if (va)
   {
-    var va_gewicht = Math.round(v_in_dm*8*1000)/1000;
+    var va_gewicht = Math.round(v_in_dm*8*100)/100;
     gewichta.innerHTML = "Das Gewicht des Bleches beträgt "+va_gewicht+" Kilogramm";
   }
   else if (h2)
   {
-    var h2_gewicht = Math.round(v_in_dm*7.85*1000)/1000;
+    var h2_gewicht = Math.round(v_in_dm*7.85*100)/100;
     gewichta.innerHTML = "Das Gewicht des Bleches beträgt "+h2_gewicht+" Kilogramm";
   }
   else
@@ -208,10 +208,9 @@ function Kreissegmentbrechnung()
   var teilung = document.getElementById("KreisteilungE").value;
 
   //Berechnung
-  var radius = durchmesser / 2;
   var winkel = 360 / teilung;
   var bogenmaß = winkel * (Math.PI / 180);
-  var ergebnis = 2 * radius * Math.sin(bogenmaß / 2);
+  var ergebnis = durchmesser * Math.sin(bogenmaß / 2);
   var ergebnisGerundet = Math.round(ergebnis*10) / 10;
   if (ergebnisGerundet == 0 || isNaN(ergebnisGerundet))
   {
@@ -222,9 +221,108 @@ function Kreissegmentbrechnung()
   anzeige.innerHTML = "Ihr Sehnenmaß beträgt: " + ergebnisGerundet;
   }
   // debug
-  console.log(radius);
   console.log(winkel);
   console.log(bogenmaß);
   console.log(Math.sin(bogenmaß));
   console.log(ergebnisGerundet);
+}
+
+//iso Gewinde Tabelle
+function isoGewindeTabelle()
+{
+  // variablen deklaration
+  var isoGewindeE = document.getElementById("isoGewindeE").value;
+  var Eingabewert = parseFloat(isoGewindeE);
+  var isoGewindeTabelleA = document.getElementById("isoGewindeTabelleA");
+
+  // Object Constructor
+  function isoGewinde(kernloch, schlüsselweite, steigung)
+  {
+    this.kernloch = kernloch
+    this.schlüsselweite = schlüsselweite
+    this.steigung = steigung
+    this.tabellenAnzeige = function()
+    {
+      var createE = document.createElement("p");
+      createE.innerHTML = "Kernloch: " + this.kernloch + "mm";
+      isoGewindeTabelleA.appendChild(createE);
+
+      var createE = document.createElement("p");
+      createE.innerHTML = "Schlüsselweite: " + this.schlüsselweite + "mm";
+      isoGewindeTabelleA.appendChild(createE);
+
+      var createE = document.createElement("p");
+      createE.innerHTML = "Steigung: " + this.steigung + "mm";
+      isoGewindeTabelleA.appendChild(createE);
+    }
+  }
+
+  // Objects
+  var M1 = new isoGewinde("0,75", "0", "0,25");
+  var M2 = new isoGewinde("1,6", "4", "0,4");
+  var M3 = new isoGewinde("2,5", "5,5", "0,5");
+  var M4 = new isoGewinde("3,3", "7", "0,7");
+  var M5 = new isoGewinde("4,2", "8", "0,8");
+  var M6 = new isoGewinde("5", "10", "1");
+  var M8 = new isoGewinde("6,8", "13", "1,25");
+  var M10 = new isoGewinde("8,5", "17", "1,5");
+  var M12 = new isoGewinde("10,2", "19", "1,75");
+  var M16 = new isoGewinde("14", "24", "2");
+  var M20 = new isoGewinde("17,5", "30", "2,5");
+  var M24 = new isoGewinde("21", "36", "3");
+  var M30 = new isoGewinde("26,5", "46", "3,5");
+  var M36 = new isoGewinde("32", "55", "4");
+  var M42 = new isoGewinde("37,5", "65", "4,5");
+  var M48 = new isoGewinde("43", "75", "5");
+  var M56 = new isoGewinde("50,5", "85", "5,5");
+  var M64 = new isoGewinde("58", "95", "6");
+
+  //Switch to get what object get show
+  switch (Eingabewert) {
+    case 1: M1.tabellenAnzeige();
+      break;
+    case 2: M2.tabellenAnzeige();
+      break;
+    case 3: M3.tabellenAnzeige();
+      break;
+    case 4: M4.tabellenAnzeige();
+      break;
+    case 5: M5.tabellenAnzeige();
+      break;
+    case 6: M6.tabellenAnzeige();
+      break;
+    case 8: M8.tabellenAnzeige();
+      break;
+    case 10: M10.tabellenAnzeige();
+      break;
+    case 12: M12.tabellenAnzeige();
+      break;
+    case 16: M16.tabellenAnzeige();
+      break;
+    case 20: M20.tabellenAnzeige();
+      break;
+    case 24: M24.tabellenAnzeige();
+      break;
+    case 30: M30.tabellenAnzeige();
+      break;
+    case 36: M36.tabellenAnzeige();
+      break;
+    case 42: M42.tabellenAnzeige();
+      break;
+    case 48: M48.tabellenAnzeige();
+      break;
+    case 56: M56.tabellenAnzeige();
+      break;
+    case 64: M64.tabellenAnzeige();
+      break;
+    default: isoGewindeTabelleA.innerHTML = "Ihr metrisches Gewinde wurde nicht gefunden! Bitte versuchen Sie es erneut."
+
+  }
+
+  //debug
+  console.log(M1);
+  console.log(M2);
+  console.log(isoGewindeE);
+  console.log(isoGewindeTabelleA);
+  console.log();
 }
