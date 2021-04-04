@@ -231,9 +231,11 @@ function Kreissegmentbrechnung()
 function isoGewindeTabelle()
 {
   // variablen deklaration
-  var isoGewindeE = document.getElementById("isoGewindeE").value;
-  var Eingabewert = parseFloat(isoGewindeE);
-  var isoGewindeTabelleA = document.getElementById("isoGewindeTabelleA");
+  var mGewindeE = document.getElementById("isoGewindeE").value;
+  var Eingabewert = parseFloat(mGewindeE);
+  var mGewindeA1 = document.getElementById("mGewindeA1");
+  var mGewindeA2 = document.getElementById("mGewindeA2");
+  var mGewindeA3 = document.getElementById("mGewindeA3");
 
   // Object Constructor
   function isoGewinde(kernloch, schlüsselweite, steigung)
@@ -243,17 +245,9 @@ function isoGewindeTabelle()
     this.steigung = steigung
     this.tabellenAnzeige = function()
     {
-      var createE = document.createElement("p");
-      createE.innerHTML = "Kernloch: " + this.kernloch + "mm";
-      isoGewindeTabelleA.appendChild(createE);
-
-      var createE = document.createElement("p");
-      createE.innerHTML = "Schlüsselweite: " + this.schlüsselweite + "mm";
-      isoGewindeTabelleA.appendChild(createE);
-
-      var createE = document.createElement("p");
-      createE.innerHTML = "Steigung: " + this.steigung + "mm";
-      isoGewindeTabelleA.appendChild(createE);
+    mGewindeA1.innerHTML = "Kernloch: " + this.kernloch + "mm";
+    mGewindeA2.innerHTML = "Schlüsselweite: " + this.schlüsselweite + "mm";
+    mGewindeA3.innerHTML = "Steigung: " + this.steigung + "mm";
     }
   }
 
