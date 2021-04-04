@@ -84,86 +84,6 @@ console.log(h2drehzahl);
 console.log(edelstahl);
 }
 
-//Kernlochrechner
-function kernlochrechner()
-{
-  //Eingabe
-  var gewindee = document.getElementById("gewindeeingabe").value;
-  var gewindea = document.getElementById("gewindeanzeige");
-  var kernlocha = document.getElementById("kernlochanzeige");
-  var speicher = [0.75,1.6,2.5,3.3,4.2,5.0,0,6.8,0,8.5,0,10.2,0,12,0,14,0,0,0,
-                  17.5,0,0,0,21,0,0,0,0,0,26.5,0,0,0,0,0,32,0,0,0,0,0,37.5];
-  //Gewindeanzeige
-  gewindea.innerHTML = "M"+gewindee+" Gewinde";
-  //Kernlochberechnung
-  if (speicher[gewindee-1]==0 || gewindee > speicher.length)
-  {
-    kernlocha.innerHTML = "Metrisches ISO-Gewinde nicht gefunden!";
-  }
-  else
-  {
-    kernlocha.innerHTML = "Kernlochdurchmesser = "+speicher[gewindee-1]+"mm";
-  }
-}
-
-//Anzugsdrehmoment
-function anzugsdrehmoment()
-{
-  //Eingabe
-  var schraubene = document.getElementById("schraubeneingabe").value;
-  var schraubena = document.getElementById("schraubengröße");
-  var drehmomenta = document.getElementById("drehmomentanzeige");
-  var s5_6 = document.getElementById("s5_6").checked;
-  var s8_8 = document.getElementById("s8_8").checked;
-  var s10_9 = document.getElementById("s10_9").checked;
-  var s12_9 = document.getElementById("s12_9").checked;
-  var speicher5_6 = [0,0,0,1.36,2.7,4.6,0,11,0,22,0,39,0,62,0,95,0,130,0,184,
-                     0,250,0,315,0,0,470,0,0,635,0,0,865,0,0,1140];
-  var speicher8_8 = [0,0,0,3,5.9,10,0,25,0,49,0,85,0,135,0,210,0,300,0,425,0,
-                     580,0,730,0,0,1100,0,0,1450,0,0,2000,0,0,2600];
-  var speicher10_9 = [0,0,0,4.4,8.7,15,0,36,0,72,0,125,0,200,0,310,0,430,0,610,
-                      0,830,0,1050,0,0,1550,0,0,2100,0,0,2800,0,0,3700];
-  var speicher12_9 = [0,0,0,5.1,10,18,0,43,0,84,0,145,0,235,0,365,0,500,0,710,
-                      0,970,0,1220,0,0,1800,0,0,2450,0,0,3400,0,0,4300];
-  //Schraubenanzeige
-  schraubena.innerHTML = "M"+schraubene+" Schraube";
-  //Drehmoment Berechnung
-      if (s5_6)
-      {
-        if (speicher5_6[schraubene-1] == 0 || schraubene > speicher5_6.length)
-        drehmomenta.innerHTML = "Schraube nicht gefunden!";
-        else
-        drehmomenta.innerHTML = speicher5_6[schraubene-1]+"Nm";
-      }
-      else if (s8_8)
-      {
-        if (speicher8_8[schraubene-1] == 0 || schraubene > speicher8_8.length)
-        drehmomenta.innerHTML = "Schraube nicht gefunden!";
-        else
-        drehmomenta.innerHTML = speicher8_8[schraubene-1]+"Nm";
-      }
-      else if (s10_9)
-      {
-        if (speicher10_9[schraubene-1] == 0 || schraubene > speicher10_9.length)
-        drehmomenta.innerHTML = "Schraube nicht gefunden!";
-        else
-        drehmomenta.innerHTML = speicher10_9[schraubene-1]+"Nm";
-      }
-      else if (s12_9)
-      {
-        if (speicher12_9[schraubene-1] == 0 || schraubene > speicher12_9.length)
-        drehmomenta.innerHTML = "Schraube nicht gefunden!";
-        else
-        drehmomenta.innerHTML = speicher12_9[schraubene-1]+"Nm";
-      }
-      else
-       drehmomenta.innerHTML = "Bitte Fertigungsklasse wählen!";
-  //debug
-  console.log(schraubene);
-  console.log(schraubena);
-  console.log(drehmomenta);
-}
-
 //Blech-Gewicht-rechner
 function gewichtrechner()
 {
@@ -236,40 +156,49 @@ function isoGewindeTabelle()
   var mGewindeA1 = document.getElementById("mGewindeA1");
   var mGewindeA2 = document.getElementById("mGewindeA2");
   var mGewindeA3 = document.getElementById("mGewindeA3");
+  var mGewindeA4 = document.getElementById("mGewindeA4");
+  var mGewindeA5 = document.getElementById("mGewindeA5");
+  var mGewindeA6 = document.getElementById("mGewindeA6");
 
   // Object Constructor
-  function isoGewinde(kernloch, schlüsselweite, steigung)
+  function isoGewinde(kernloch, schlüsselweite, steigung, aMoment5_6, aMoment8_8, aMoment10_9)
   {
     this.kernloch = kernloch
     this.schlüsselweite = schlüsselweite
     this.steigung = steigung
+    this.aMoment5_6 = aMoment5_6
+    this.aMoment8_8 = aMoment8_8
+    this.aMoment10_9 = aMoment10_9
     this.tabellenAnzeige = function()
     {
-    mGewindeA1.innerHTML = "Kernloch: " + this.kernloch + "mm";
+    mGewindeA1.innerHTML = "Kernloch:\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 " + this.kernloch + "mm";
     mGewindeA2.innerHTML = "Schlüsselweite: " + this.schlüsselweite + "mm";
-    mGewindeA3.innerHTML = "Steigung: " + this.steigung + "mm";
+    mGewindeA3.innerHTML = "Steigung:\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 " + this.steigung + "mm";
+    mGewindeA4.innerHTML = "Anzugdrehmoment 5.6:\u00A0\u00A0 " + this.aMoment5_6 + "Nm";
+    mGewindeA5.innerHTML = "Anzugdrehmoment 8.8:\u00A0\u00A0 " + this.aMoment8_8 + "Nm";
+    mGewindeA6.innerHTML = "Anzugdrehmoment 10.9: " + this.aMoment10_9 + "Nm";
     }
   }
 
   // Objects
-  var M1 = new isoGewinde("0,75", "0", "0,25");
-  var M2 = new isoGewinde("1,6", "4", "0,4");
-  var M3 = new isoGewinde("2,5", "5,5", "0,5");
-  var M4 = new isoGewinde("3,3", "7", "0,7");
-  var M5 = new isoGewinde("4,2", "8", "0,8");
-  var M6 = new isoGewinde("5", "10", "1");
-  var M8 = new isoGewinde("6,8", "13", "1,25");
-  var M10 = new isoGewinde("8,5", "17", "1,5");
-  var M12 = new isoGewinde("10,2", "19", "1,75");
-  var M16 = new isoGewinde("14", "24", "2");
-  var M20 = new isoGewinde("17,5", "30", "2,5");
-  var M24 = new isoGewinde("21", "36", "3");
-  var M30 = new isoGewinde("26,5", "46", "3,5");
-  var M36 = new isoGewinde("32", "55", "4");
-  var M42 = new isoGewinde("37,5", "65", "4,5");
-  var M48 = new isoGewinde("43", "75", "5");
-  var M56 = new isoGewinde("50,5", "85", "5,5");
-  var M64 = new isoGewinde("58", "95", "6");
+  var M1 = new isoGewinde("0,75", "0", "0,25", "-", "-");
+  var M2 = new isoGewinde("1,6", "4", "0,4", "0,16", "0,35", "0,49");
+  var M3 = new isoGewinde("2,5", "5,5", "0,5", "0,6", "1,28", "1,80");
+  var M4 = new isoGewinde("3,3", "7", "0,7", "1,39", "2,97", "4,18");
+  var M5 = new isoGewinde("4,2", "8", "0,8", "2,83", "6,03", "8,48");
+  var M6 = new isoGewinde("5", "10", "1", "4,8", "10,25", "14,41");
+  var M8 = new isoGewinde("6,8", "13", "1,25", "11,69", "24,93", "35,06");
+  var M10 = new isoGewinde("8,5", "17", "1,5", "23", "49", "70");
+  var M12 = new isoGewinde("10,2", "19", "1,75", "40", "86", "121");
+  var M16 = new isoGewinde("14", "24", "2", "101", "215", "302");
+  var M20 = new isoGewinde("17,5", "30", "2,5", "197", "420", "590");
+  var M24 = new isoGewinde("21", "36", "3", "340", "726", "1020");
+  var M30 = new isoGewinde("26,5", "46", "3,5", "677", "1445", "2032");
+  var M36 = new isoGewinde("32", "55", "4", "1185", "2528", "3555");
+  var M42 = new isoGewinde("37,5", "65", "4,5", "2373", "4050", "5696");
+  var M48 = new isoGewinde("43", "75", "5", "2853", "6086", "8559");
+  var M56 = new isoGewinde("50,5", "85", "5,5", "4591", "9793", "13772");
+  var M64 = new isoGewinde("58", "95", "6", "6920", "14762", "20759");
 
   //Switch to get what object get show
   switch (Eingabewert) {
@@ -309,7 +238,7 @@ function isoGewindeTabelle()
       break;
     case 64: M64.tabellenAnzeige();
       break;
-    default: isoGewindeTabelleA.innerHTML = "Ihr metrisches Gewinde wurde nicht gefunden! Bitte versuchen Sie es erneut."
+    default: mGewindeA1.innerHTML = "Ihr metrisches Gewinde wurde nicht gefunden! Bitte versuchen Sie es erneut."
 
   }
 
@@ -317,6 +246,5 @@ function isoGewindeTabelle()
   console.log(M1);
   console.log(M2);
   console.log(isoGewindeE);
-  console.log(isoGewindeTabelleA);
   console.log();
 }
