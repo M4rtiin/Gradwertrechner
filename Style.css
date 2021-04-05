@@ -41,13 +41,13 @@ button {
 	 padding-right: 10px;
 }
 
-#mGewindeA1, #mGewindeA3, #mGewindeA5
+#A1, #A3, #A5
 {
   background-color: #A4C3FF;
   border-radius: 5px;
 }
 
-#mGewindeA2, #mGewindeA4, #mGewindeA6
+#A2, #A4, #A6
 {
   background-color: #B4FFDB;
   border-radius: 5px;

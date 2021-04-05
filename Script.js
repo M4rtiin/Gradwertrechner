@@ -153,12 +153,12 @@ function isoGewindeTabelle()
   // variablen deklaration
   var mGewindeE = document.getElementById("isoGewindeE").value;
   var Eingabewert = parseFloat(mGewindeE);
-  var mGewindeA1 = document.getElementById("mGewindeA1");
-  var mGewindeA2 = document.getElementById("mGewindeA2");
-  var mGewindeA3 = document.getElementById("mGewindeA3");
-  var mGewindeA4 = document.getElementById("mGewindeA4");
-  var mGewindeA5 = document.getElementById("mGewindeA5");
-  var mGewindeA6 = document.getElementById("mGewindeA6");
+  var A1 = document.getElementById("A1");
+  var A2 = document.getElementById("A2");
+  var A3 = document.getElementById("A3");
+  var A4 = document.getElementById("A4");
+  var A5 = document.getElementById("A5");
+  var A6 = document.getElementById("A6");
 
   // Object Constructor
   function isoGewinde(kernloch, schlüsselweite, steigung, aMoment5_6, aMoment8_8, aMoment10_9)
@@ -171,12 +171,12 @@ function isoGewindeTabelle()
     this.aMoment10_9 = aMoment10_9
     this.tabellenAnzeige = function()
     {
-    mGewindeA1.innerHTML = "Kernloch:\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 " + this.kernloch + "mm";
-    mGewindeA2.innerHTML = "Schlüsselweite: " + this.schlüsselweite + "mm";
-    mGewindeA3.innerHTML = "Steigung:\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 " + this.steigung + "mm";
-    mGewindeA4.innerHTML = "Anzugdrehmoment 5.6:\u00A0\u00A0 " + this.aMoment5_6 + "Nm";
-    mGewindeA5.innerHTML = "Anzugdrehmoment 8.8:\u00A0\u00A0 " + this.aMoment8_8 + "Nm";
-    mGewindeA6.innerHTML = "Anzugdrehmoment 10.9: " + this.aMoment10_9 + "Nm";
+    A1.innerHTML = "Kernloch:\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 " + this.kernloch + "mm";
+    A2.innerHTML = "Schlüsselweite: " + this.schlüsselweite + "mm";
+    A3.innerHTML = "Steigung:\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 " + this.steigung + "mm";
+    A4.innerHTML = "Anzugdrehmoment 5.6:\u00A0\u00A0 " + this.aMoment5_6 + "Nm";
+    A5.innerHTML = "Anzugdrehmoment 8.8:\u00A0\u00A0 " + this.aMoment8_8 + "Nm";
+    A6.innerHTML = "Anzugdrehmoment 10.9: " + this.aMoment10_9 + "Nm";
     }
   }
 
@@ -201,7 +201,8 @@ function isoGewindeTabelle()
   var M64 = new isoGewinde("58", "95", "6", "6920", "14762", "20759");
 
   //Switch to get what object get show
-  switch (Eingabewert) {
+  switch (Eingabewert)
+  {
     case 1: M1.tabellenAnzeige();
       break;
     case 2: M2.tabellenAnzeige();
@@ -238,8 +239,7 @@ function isoGewindeTabelle()
       break;
     case 64: M64.tabellenAnzeige();
       break;
-    default: mGewindeA1.innerHTML = "Ihr metrisches Gewinde wurde nicht gefunden! Bitte versuchen Sie es erneut."
-
+    default: A1.innerHTML = "Ihr metrisches Gewinde wurde nicht gefunden! Bitte versuchen Sie es erneut."
   }
 
   //debug
