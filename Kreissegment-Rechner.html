@@ -27,6 +27,16 @@
     <input style="height:30px"; type="text" placeholder="Kreisteilung" id="KreisteilungE">
     <button onclick="Kreissegmentbrechnung()">Berechnen</button> <br>
   </div>
+
+  <!--Enterbutton Trigger-->
+   <script>
+   document.addEventListener ('keypress', function(e){
+     if (e.key === 'Enter'){
+       Kreissegmentbrechnung();
+     }
+   });
+   </script>
+
   <!--Ergebnis -->
   <div id="Anzeige">
     <a id="Längenanzeige"> </a>

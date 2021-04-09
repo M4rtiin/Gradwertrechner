@@ -13,12 +13,23 @@
     <li><h2><a href="IsoGewindeTabelle.html">Iso-Gewinde-Tabelle</a></h2></li>
    </ul>
   </div>
+
   <!--Radius Eingabe -->
   <div id="Eingabe1">
     <h2>Geben Sie hier ihr gewünschtes metrisches Gewinde ein</h2>
       <a>M: </a><input style="height:30px"; type="tel" placeholder="Iso Gewinde" id="isoGewindeE">
-      <button onclick="isoGewindeTabelle()">Anzeigen</button> <br>
+      <button id="GewindeButton" onclick="isoGewindeTabelle()">Anzeigen</button> <br>
   </div>
+
+  <!--Enterbutton Trigger-->
+   <script>
+   document.addEventListener ('keypress', function(e){
+     if (e.key === 'Enter'){
+       isoGewindeTabelle();
+     }
+   });
+   </script>
+
   <!--Ergebnis -->
   <div id="Anzeige">
     <a id="A1"> </a><br>
