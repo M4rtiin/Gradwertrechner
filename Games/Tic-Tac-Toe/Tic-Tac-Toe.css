@@ -19,9 +19,14 @@ body {
 	padding-right: 40px;
 }
 
-button {
+#B1, #B2, #B3, #B4, #B5, #B6, #B7, #B8, #B9 {
   height: 70px;
   width: 70px;
+  margin-bottom: 2px;
+  margin-right: 2px;
+}
+
+#line1, #line2, #line3 {
 }
 
 #Board {
@@ -30,4 +35,20 @@ button {
 
 #Anzeige {
   padding-left: 20px;
+}
+
+#Reset {
+  margin-left: 20px;
+  color:green;
+  border-radius: 20px;
+  height: 40px;
+  width: 90px;
+
+}
+
+#anzeigeGrün, #anzeigeBlau {
+  margin-left: 25px;
+  font-size: 20px;
+  background-color: white;
+  border-radius: 5px;
 }

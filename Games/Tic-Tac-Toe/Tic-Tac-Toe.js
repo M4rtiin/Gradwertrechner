@@ -8,10 +8,14 @@ var B6 = 0;
 var B7 = 0;
 var B8 = 0;
 var B9 = 0;
+var counterGreen = 0;
+var counterBlue = 0;
 var counter = 0;
 window.onload = function()
 {
   document.getElementById("Anzeige").innerHTML = "Grün ist an der Reihe";
+  document.getElementById("anzeigeGrün").innerHTML = "Grün: 0";
+  document.getElementById("anzeigeBlau").innerHTML = "Blau: 0";
 }
 
 function main()
@@ -33,18 +37,48 @@ function checkWinner()
   if (c1===3||c2===3||c3===3||c4===3||c5===3||c6===3||c7===3||c8===3)
   {
     document.getElementById("Anzeige").innerHTML = "Grün hat gewonnen!";
-    window.alert("Grün hat gewonnen")
+    window.alert("Grün hat gewonnen");
+    counterGreen += 1;
+    document.getElementById("anzeigeGrün").innerHTML = "Grün: " + counterGreen;
+    reset();
   }
   else if (c1===12||c2===12||c3===12||c4===12||c5===12||c6===12||c7===12||c8===12)
   {
     document.getElementById("Anzeige").innerHTML = "Blau hat gewonnen!";
     window.alert("Blau hat gewonnen")
+    counterBlue += 1;
+    reset();
+    document.getElementById("anzeigeBlau").innerHTML = "Blau: " + counterBlue;
   }
   else if (counter===9)
   {
     document.getElementById("Anzeige").innerHTML = "Unentschieden!";
     window.alert("Unentschieden!");
+    reset();
   }
+}
+
+function reset()
+{
+  B1 = 0;
+  B2 = 0;
+  B3 = 0;
+  B4 = 0;
+  B5 = 0;
+  B6 = 0;
+  B7 = 0;
+  B8 = 0;
+  B9 = 0;
+  counter = 0;
+  document.getElementById("B1").style.background = "white";
+  document.getElementById("B2").style.background = "white";
+  document.getElementById("B3").style.background = "white";
+  document.getElementById("B4").style.background = "white";
+  document.getElementById("B5").style.background = "white";
+  document.getElementById("B6").style.background = "white";
+  document.getElementById("B7").style.background = "white";
+  document.getElementById("B8").style.background = "white";
+  document.getElementById("B9").style.background = "white";
 }
 
 function playerAnzeige()
