@@ -23,3 +23,11 @@ button {
   height: 70px;
   width: 70px;
 }
+
+#Board {
+  padding-left: 20px;
+}
+
+#Anzeige {
+  padding-left: 20px;
+}
