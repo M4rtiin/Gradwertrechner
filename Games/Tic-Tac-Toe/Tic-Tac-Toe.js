@@ -16,12 +16,34 @@ window.onload = function()
 
 function main()
 {
-
+  playerAnzeige();
+  checkWinner();
 }
 
-function winner()
+function checkWinner()
 {
-
+  var c1 = B1+B2+B3;
+  var c2 = B1+B4+B7;
+  var c3 = B1+B5+B9;
+  var c4 = B3+B6+B9;
+  var c5 = B7+B8+B9;
+  var c6 = B3+B5+B7;
+  var c7 = B2+B5+B8;
+  if (c1===3||c2===3||c3===3||c4===3||c5===3||c6===3||c7===3)
+  {
+    document.getElementById("Anzeige").innerHTML = "Grün hat gewonnen!";
+    window.alert("Grün hat gewonnen")
+  }
+  else if (c1===12||c2===12||c3===12||c4===12||c5===12||c6===12||c7===12)
+  {
+    document.getElementById("Anzeige").innerHTML = "Blau hat gewonnen!";
+    window.alert("Blau hat gewonnen")
+  }
+  else if (counter===9)
+  {
+    document.getElementById("Anzeige").innerHTML = "Unentschieden!";
+    window.alert("Unentschieden!");
+  }
 }
 
 function playerAnzeige()
@@ -42,7 +64,7 @@ function Bf1()
   if (counter%2 ==0)
   {
     document.getElementById("B1").style.background = "blue";
-    B1 = 2;
+    B1 = 4;
   }
   else
   {
@@ -57,7 +79,7 @@ function Bf2()
   if (counter%2 ==0)
   {
     document.getElementById("B2").style.background = "blue";
-    B2 = 2;
+    B2 = 4;
   }
   else
   {
@@ -72,7 +94,7 @@ function Bf3()
   if (counter%2 ==0)
   {
     document.getElementById("B3").style.background = "blue";
-    B3 = 2;
+    B3 = 4;
   }
   else
   {
@@ -87,7 +109,7 @@ function Bf4()
   if (counter%2 ==0)
   {
     document.getElementById("B4").style.background = "blue";
-    B4 = 2;
+    B4 = 4;
   }
   else
   {
@@ -102,7 +124,7 @@ function Bf5()
   if (counter%2 ==0)
   {
     document.getElementById("B5").style.background = "blue";
-    B5 = 2;
+    B5 = 4;
   }
   else
   {
@@ -117,7 +139,7 @@ function Bf6()
   if (counter%2 ==0)
   {
     document.getElementById("B6").style.background = "blue";
-    B6 = 2;
+    B6 = 4;
   }
   else
   {
@@ -132,7 +154,7 @@ function Bf7()
   if (counter%2 ==0)
   {
     document.getElementById("B7").style.background = "blue";
-    B7 = 2;
+    B7 = 4;
   }
   else
   {
@@ -147,7 +169,7 @@ function Bf8()
   if (counter%2 ==0)
   {
     document.getElementById("B8").style.background = "blue";
-    B8 = 2;
+    B8 = 4;
   }
   else
   {
@@ -162,7 +184,7 @@ function Bf9()
   if (counter%2 ==0)
   {
     document.getElementById("B9").style.background = "blue";
-    B9 = 2;
+    B9 = 4;
   }
   else
   {
