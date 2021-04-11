@@ -1,0 +1,25 @@
+
+body {
+  background-color: #2c2c2c;
+}
+#header {
+  background: linear-gradient(45deg, #0000FF, #008000);
+  border-radius: 50px;
+}
+#header a:hover {
+	color: white;
+}
+#header a {
+	color: black;
+}
+#nav {
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-bottom: 20px;
+	padding-right: 40px;
+}
+
+button {
+  height: 50px;
+  width: 50px;
+}
