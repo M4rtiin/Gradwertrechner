@@ -29,12 +29,13 @@ function checkWinner()
   var c5 = B7+B8+B9;
   var c6 = B3+B5+B7;
   var c7 = B2+B5+B8;
-  if (c1===3||c2===3||c3===3||c4===3||c5===3||c6===3||c7===3)
+  var c8 = B4+B5+B6;
+  if (c1===3||c2===3||c3===3||c4===3||c5===3||c6===3||c7===3||c8===3)
   {
     document.getElementById("Anzeige").innerHTML = "Grün hat gewonnen!";
     window.alert("Grün hat gewonnen")
   }
-  else if (c1===12||c2===12||c3===12||c4===12||c5===12||c6===12||c7===12)
+  else if (c1===12||c2===12||c3===12||c4===12||c5===12||c6===12||c7===12||c8===12)
   {
     document.getElementById("Anzeige").innerHTML = "Blau hat gewonnen!";
     window.alert("Blau hat gewonnen")
