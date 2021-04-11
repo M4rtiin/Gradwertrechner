@@ -37,9 +37,14 @@ body {
   padding-left: 20px;
 }
 
-#anzeigeGrün, #anzeigeBlau {
-  margin-left: 20px;
+#anzeigeGrün {
   font-size: 20px;
-  background-color: white;
+  background-color: green;
+  border-radius: 5px;
+}
+
+#anzeigeBlau {
+  font-size: 20px;
+  background-color: blue;
   border-radius: 5px;
 }
