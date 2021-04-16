@@ -11,19 +11,32 @@ var B9 = 0;
 var counterGreen = 0;
 var counterBlue = 0;
 var counter = 0;
+//variablen for display
+var grün = "Grün";
+var blau = "Blau";
+var lastWinner = grün;
+var lastLooser = blau;
+//variablen for the checkWinner
+var green = "green";
+var blue = "blue";
+var ll = "blue";
+var lw = "green";
+
 window.onload = function()
 {
-  document.getElementById("Anzeige").innerHTML = "Grün ist an der Reihe";
+  document.getElementById("Anzeige").innerHTML = "Blau ist an der Reihe";
   document.getElementById("anzeigeGrün").innerHTML = "Grün: 0";
   document.getElementById("anzeigeBlau").innerHTML = "Blau: 0";
 }
 
+//Mainfunction
 function main()
 {
   playerAnzeige();
   checkWinner();
 }
 
+//Check if anyone winn the game
 function checkWinner()
 {
   var c1 = B1+B2+B3;
@@ -36,28 +49,71 @@ function checkWinner()
   var c8 = B4+B5+B6;
   if (c1===3||c2===3||c3===3||c4===3||c5===3||c6===3||c7===3||c8===3)
   {
-    document.getElementById("Anzeige").innerHTML = "Grün hat gewonnen!";
-    window.alert("Grün hat gewonnen");
-    counterGreen += 1;
-    document.getElementById("anzeigeGrün").innerHTML = "Grün: " + counterGreen;
+    window.alert(lastLooser + " hat gewonnen");
+    whoisLastLooser();
     reset();
   }
   else if (c1===12||c2===12||c3===12||c4===12||c5===12||c6===12||c7===12||c8===12)
   {
-    document.getElementById("Anzeige").innerHTML = "Blau hat gewonnen!";
-    window.alert("Blau hat gewonnen")
-    counterBlue += 1;
+    window.alert(lastWinner + " hat gewonnen");
+    whoisLastWinner();
     reset();
-    document.getElementById("anzeigeBlau").innerHTML = "Blau: " + counterBlue;
   }
   else if (counter===9)
   {
-    document.getElementById("Anzeige").innerHTML = "Unentschieden!";
     window.alert("Unentschieden!");
-    reset();
+   reset();
+   playerAnzeige();
   }
+
+  //who is who
+  function whoisLastLooser()
+    {
+      if (lastLooser == blau)
+      {
+        counterBlue += 1;
+        document.getElementById("anzeigeBlau").innerHTML = "Blau: " + counterBlue;
+        lastWinner = blau;
+        lastLooser = grün;
+        lw = blue;
+        ll = green;
+      }
+      else
+      {
+        counterGreen += 1;
+        document.getElementById("anzeigeGrün").innerHTML = "Grün: " + counterGreen;
+        lastWinner = grün;
+        lastLooser = blau;
+        lw = green;
+        ll = blue;
+      }
+    }
+
+    //who is who
+  function whoisLastWinner()
+    {
+        if (lastWinner == blau)
+        {
+          counterBlue += 1;
+          document.getElementById("anzeigeBlau").innerHTML = "Blau: " + counterBlue;
+          lastWinner = blau;
+          lastLooser = grün;
+          lw = blue;
+          ll = green;
+        }
+        else
+        {
+          counterGreen += 1;
+          document.getElementById("anzeigeGrün").innerHTML = "Grün: " + counterGreen;
+          lastWinner = grün;
+          lastLooser = blau;
+          lw = green;
+          ll = blue;
+        }
+      }
 }
 
+//Reset the game
 function reset()
 {
   B1 = 0;
@@ -81,29 +137,31 @@ function reset()
   document.getElementById("B9").style.background = "white";
 }
 
+//Display what player is on tho clock
 function playerAnzeige()
 {
   if (counter%2 == 0)
   {
-    document.getElementById("Anzeige").innerHTML = "Grün ist an der Reihe";
+    document.getElementById("Anzeige").innerHTML = lastLooser + " ist an der Reihe";
   }
   else
   {
-    document.getElementById("Anzeige").innerHTML = "Blau ist an der Reihe";
+    document.getElementById("Anzeige").innerHTML = lastWinner + " ist an der Reihe";
   }
 }
 
+//Buttonfunctions: to get what button is clickt
 function Bf1()
 {
   counter += 1;
   if (counter%2 ==0)
   {
-    document.getElementById("B1").style.background = "blue";
+    document.getElementById("B1").style.background = lw;
     B1 = 4;
   }
   else
   {
-    document.getElementById("B1").style.background = "green";
+    document.getElementById("B1").style.background = ll;
     B1 = 1;
   }
 }
@@ -113,12 +171,12 @@ function Bf2()
   counter += 1;
   if (counter%2 ==0)
   {
-    document.getElementById("B2").style.background = "blue";
+    document.getElementById("B2").style.background = lw;
     B2 = 4;
   }
   else
   {
-    document.getElementById("B2").style.background = "green";
+    document.getElementById("B2").style.background = ll;
     B2 = 1;
   }
 }
@@ -128,12 +186,12 @@ function Bf3()
   counter += 1;
   if (counter%2 ==0)
   {
-    document.getElementById("B3").style.background = "blue";
+    document.getElementById("B3").style.background = lw;
     B3 = 4;
   }
   else
   {
-    document.getElementById("B3").style.background = "green";
+    document.getElementById("B3").style.background = ll;
     B3 = 1;
   }
 }
@@ -143,12 +201,12 @@ function Bf4()
   counter += 1;
   if (counter%2 ==0)
   {
-    document.getElementById("B4").style.background = "blue";
+    document.getElementById("B4").style.background = lw;
     B4 = 4;
   }
   else
   {
-    document.getElementById("B4").style.background = "green";
+    document.getElementById("B4").style.background = ll;
     B4 = 1;
   }
 }
@@ -158,12 +216,12 @@ function Bf5()
   counter += 1;
   if (counter%2 ==0)
   {
-    document.getElementById("B5").style.background = "blue";
+    document.getElementById("B5").style.background = lw;
     B5 = 4;
   }
   else
   {
-    document.getElementById("B5").style.background = "green";
+    document.getElementById("B5").style.background = ll;
     B5 = 1;
   }
 }
@@ -173,12 +231,12 @@ function Bf6()
   counter += 1;
   if (counter%2 ==0)
   {
-    document.getElementById("B6").style.background = "blue";
+    document.getElementById("B6").style.background = lw;
     B6 = 4;
   }
   else
   {
-    document.getElementById("B6").style.background = "green";
+    document.getElementById("B6").style.background = ll;
     B6 = 1;
   }
 }
@@ -188,12 +246,12 @@ function Bf7()
   counter += 1;
   if (counter%2 ==0)
   {
-    document.getElementById("B7").style.background = "blue";
+    document.getElementById("B7").style.background = lw;
     B7 = 4;
   }
   else
   {
-    document.getElementById("B7").style.background = "green";
+    document.getElementById("B7").style.background = ll;
     B7 = 1;
   }
 }
@@ -203,12 +261,12 @@ function Bf8()
   counter += 1;
   if (counter%2 ==0)
   {
-    document.getElementById("B8").style.background = "blue";
+    document.getElementById("B8").style.background = lw;
     B8 = 4;
   }
   else
   {
-    document.getElementById("B8").style.background = "green";
+    document.getElementById("B8").style.background = ll;
     B8 = 1;
   }
 }
@@ -218,12 +276,12 @@ function Bf9()
   counter += 1;
   if (counter%2 ==0)
   {
-    document.getElementById("B9").style.background = "blue";
+    document.getElementById("B9").style.background = lw;
     B9 = 4;
   }
   else
   {
-    document.getElementById("B9").style.background = "green";
+    document.getElementById("B9").style.background = ll;
     B9 = 1;
   }
 }
