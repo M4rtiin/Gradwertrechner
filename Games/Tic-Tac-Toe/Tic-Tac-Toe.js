@@ -36,7 +36,7 @@ function main()
   checkWinner();
 }
 
-//Check if anyone winn the game
+//Check if anyone win the game
 function checkWinner()
 {
   var c1 = B1+B2+B3;
@@ -47,29 +47,64 @@ function checkWinner()
   var c6 = B3+B5+B7;
   var c7 = B2+B5+B8;
   var c8 = B4+B5+B6;
+
   if (c1===3||c2===3||c3===3||c4===3||c5===3||c6===3||c7===3||c8===3)
   {
+    clearTimer();
     window.alert(lastLooser + " hat gewonnen");
     whoisLastLooser();
-    reset();
-  }
-  else if (c1===12||c2===12||c3===12||c4===12||c5===12||c6===12||c7===12||c8===12)
-  {
-    window.alert(lastWinner + " hat gewonnen");
-    whoisLastWinner();
-    reset();
-  }
-  else if (counter===9)
-  {
-    window.alert("Unentschieden!");
-   reset();
-   playerAnzeige();
+    return reset();
   }
 
-  //who is who
-  function whoisLastLooser()
+  else if (c1===12||c2===12||c3===12||c4===12||c5===12||c6===12||c7===12||c8===12)
+  {
+    clearTimer();
+    window.alert(lastWinner + " hat gewonnen");
+    whoisLastWinner();
+    return reset();
+  }
+
+  else if (counter===9)
+  {
+   clearTimer();
+   window.alert("Unentschieden!");
+   reset();
+   return  playerAnzeige();
+  }
+
+  else
+  {
+   return  timer();
+  }
+}
+
+//who is who? And count 
+function whoisLastLooser()
+{
+    if (lastLooser == blau)
     {
-      if (lastLooser == blau)
+      counterBlue += 1;
+      document.getElementById("anzeigeBlau").innerHTML = "Blau: " + counterBlue;
+      lastWinner = blau;
+      lastLooser = grün;
+      lw = blue;
+      ll = green;
+    }
+    else
+    {
+      counterGreen += 1;
+      document.getElementById("anzeigeGrün").innerHTML = "Grün: " + counterGreen;
+      lastWinner = grün;
+      lastLooser = blau;
+      lw = green;
+      ll = blue;
+    }
+  }
+
+//who is who? And count
+function whoisLastWinner()
+{
+      if (lastWinner == blau)
       {
         counterBlue += 1;
         document.getElementById("anzeigeBlau").innerHTML = "Blau: " + counterBlue;
@@ -88,30 +123,6 @@ function checkWinner()
         ll = blue;
       }
     }
-
-    //who is who
-  function whoisLastWinner()
-    {
-        if (lastWinner == blau)
-        {
-          counterBlue += 1;
-          document.getElementById("anzeigeBlau").innerHTML = "Blau: " + counterBlue;
-          lastWinner = blau;
-          lastLooser = grün;
-          lw = blue;
-          ll = green;
-        }
-        else
-        {
-          counterGreen += 1;
-          document.getElementById("anzeigeGrün").innerHTML = "Grün: " + counterGreen;
-          lastWinner = grün;
-          lastLooser = blau;
-          lw = green;
-          ll = blue;
-        }
-      }
-}
 
 //Reset the game
 function reset()
@@ -142,17 +153,52 @@ function playerAnzeige()
 {
   if (counter%2 == 0)
   {
-    document.getElementById("Anzeige").innerHTML = lastLooser + " ist an der Reihe";
+    return document.getElementById("Anzeige").innerHTML = lastLooser + " ist an der Reihe";
   }
   else
   {
-    document.getElementById("Anzeige").innerHTML = lastWinner + " ist an der Reihe";
+    return document.getElementById("Anzeige").innerHTML = lastWinner + " ist an der Reihe";
+  }
+}
+
+//Timerfunctions
+function timer()
+{
+  var timeS = document.getElementById("Timer").value;
+  var timeMS = timeS * 1000;
+  timeoutID = window.setTimeout(zeitAbgelaufen, timeMS);
+  console.log("TimerRun");
+}
+
+function zeitAbgelaufen()
+{
+  if (counter%2 == 0)
+  {
+    window.alert("Zeit ist abgelaufen! " + lastWinner + " hat gewonnen!");
+    whoisLastWinner();
+    return reset();
+  }
+  else
+  {
+    window.alert("Zeit ist abgelaufen! " + lastLooser + " hat gewonnen!");
+    whoisLastLooser();
+    return reset();
+  }
+}
+
+function clearTimer()
+{
+  if (counter !== 0)
+  {
+    window.clearTimeout(timeoutID);
+    console.log("timer clear");
   }
 }
 
 //Buttonfunctions: to get what button is clickt
 function Bf1()
 {
+  clearTimer();
   counter += 1;
   if (counter%2 ==0)
   {
@@ -168,6 +214,7 @@ function Bf1()
 
 function Bf2()
 {
+  clearTimer();
   counter += 1;
   if (counter%2 ==0)
   {
@@ -183,6 +230,7 @@ function Bf2()
 
 function Bf3()
 {
+  clearTimer();
   counter += 1;
   if (counter%2 ==0)
   {
@@ -198,6 +246,7 @@ function Bf3()
 
 function Bf4()
 {
+  clearTimer();
   counter += 1;
   if (counter%2 ==0)
   {
@@ -213,6 +262,7 @@ function Bf4()
 
 function Bf5()
 {
+  clearTimer();
   counter += 1;
   if (counter%2 ==0)
   {
@@ -228,6 +278,7 @@ function Bf5()
 
 function Bf6()
 {
+  clearTimer();
   counter += 1;
   if (counter%2 ==0)
   {
@@ -243,6 +294,7 @@ function Bf6()
 
 function Bf7()
 {
+  clearTimer();
   counter += 1;
   if (counter%2 ==0)
   {
@@ -258,6 +310,7 @@ function Bf7()
 
 function Bf8()
 {
+  clearTimer();
   counter += 1;
   if (counter%2 ==0)
   {
@@ -273,6 +326,7 @@ function Bf8()
 
 function Bf9()
 {
+  clearTimer();
   counter += 1;
   if (counter%2 ==0)
   {

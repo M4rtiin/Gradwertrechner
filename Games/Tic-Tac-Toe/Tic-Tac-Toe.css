@@ -29,12 +29,8 @@ body {
 #line1, #line2, #line3 {
 }
 
-#Board {
-  padding-left: 20px;
-}
-
-#Anzeige {
-  padding-left: 20px;
+#Board, #Anzeige, #Timeline {
+  margin-left: 20px;
 }
 
 #anzeigeGrün {
