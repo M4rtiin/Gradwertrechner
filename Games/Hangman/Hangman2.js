@@ -74,3 +74,13 @@ function draw() {
             break;
     }
 }
+
+var wort_speicher = ["gesundheit", "sicherheit", "beteiligten", "höchste", "priorität", "sichergestellt", "football", "möglich", "während", "pandemie", "informationen",
+    "schade", "schulung", "zuletzt", "ehemaliger", "koch", "profis", "gesagt", "illegalen", "nachweis", "beschafft", "medienberichten", "nebenwirkungen", "impfen", "anwalt",
+    "ebenfalls", "twitter", "fall", "geäußert", "bestätigt", "mandant", "fall", "geimpft", "impfkampagne", "unterstütze", "langwierigen", "einspruch", "belasten", "lieber",
+    "konzentrieren", "weswegen", "strafe", "akzeptiere", "aufgrund", "skandalen", "gepflasterten", "vorgeschichte", "erscheinen", "spiele", "sperre", "strafe", "zumal", "derzeit",
+    "knöchelverletzung", "gefecht", "spiele", "fall", "verpasst", "dezember", "spielfeld", "zurückkehren", "streikte", "unterschrieb", "beheimateten", "allerdings", "querelen",
+    "saisonstart", "entlassen", "laboriert", "verletzung", "operation", "spielmacher", "berichte", "trainer", "medien", "realisieren", "versuchen", "berichten", "coach", "star",
+    "offenbar", "verpflichten", "enttäuscht", "bekommen", "gesagt", "glücklich", "unglaublich", "spieler", "großartige", "kerl", "chance", "jungs", "feld", "beigeschmack",
+    "personalie", "fahrlässig", "körperverletzung", "angeklagt", "Sohn", "schnitte", "prellungen"];
+

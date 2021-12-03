@@ -3,7 +3,7 @@
  <head>
   <link rel="stylesheet" href="Hangman.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-
+  <script src="Hangman.js" charset="UTF-8"></script>
   <title>Hangman</title>
  </head>
  <body>
@@ -22,9 +22,10 @@
       </div>
 
       <div>
-        <input type="text" placeholder="Worteingabe" id="Eingabe"> 
-        <button onclick="game()">Bestätigen</button><br>
-       </div>   
+          <input type="text" placeholder="Worteingabe" id="Eingabe">
+          <button onclick="game()">Bestätigen</button>
+          <button id="random_button" onclick="random()">Randome</button><br>
+      </div>   
 
       <div>
           <h1><a id="Wort"></a></h1>
@@ -35,7 +36,6 @@
       </div>
   </div>
 
-     <script src="Hangman.js" charset="UTF-8"></script>
      <script src="Hangman2.js" charset="UTF-8"></script>
      <script>var start_text = document.getElementById("Text");
              start_text.innerHTML = "Bitte Wort eingeben";
