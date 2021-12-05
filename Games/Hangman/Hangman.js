@@ -7,7 +7,8 @@ var fehler_zähler = 0;
 
 function game() {
 
-    let eingabe = document.getElementById("Eingabe").value;
+    let eingabe_input = document.getElementById("Eingabe").value;
+    let eingabe = eingabe_input.toLowerCase();
 
     if (wort == undefined) {
         wort = eingabe.split('');
@@ -17,10 +18,15 @@ function game() {
         }
         platzhalter_anzeige()
         text_anzeige();
+        platzhalter_aktualisieren();
+        document.getElementById("random_button").style.visibility = "hidden";
 
         //Debugin
-        console.log(platzhalter);
         console.log(wort);
+        console.log(platzhalter);
+        console.log(platzhalter_alt);
+        console.log(buchstaben);
+        console.log(fehler_zähler);
     }
     else {
         buchstaben.push(eingabe);
@@ -32,9 +38,10 @@ function game() {
         draw();
 
         //Debugin
-        //console.log(wort);
-        //console.log(buchstaben);
+        console.log(wort);
         console.log(platzhalter);
+        console.log(platzhalter_alt);
+        console.log(buchstaben);
         console.log(fehler_zähler);
     }
 }
@@ -47,14 +54,17 @@ function random() {
     for (let i = 0; i < wort.length; i++) {
         platzhalter.push("_");
     }
-    platzhalter_anzeige()
+    platzhalter_anzeige();
     text_anzeige();
+    platzhalter_aktualisieren();
     document.getElementById("random_button").style.visibility = "hidden";
 
     //Debugin
-    console.log(random_nummer);
-    console.log(random_wort);
     console.log(wort);
+    console.log(platzhalter);
+    console.log(platzhalter_alt);
+    console.log(buchstaben);
+    console.log(fehler_zähler);
 }
 
 function clear_input() {
@@ -74,10 +84,7 @@ function check_letters() {
         fehler_zähler++;
     }
     else {
-        platzhalter_alt = [];
-        for (let i = 0; i < platzhalter.length; i++) {
-            platzhalter_alt.push(platzhalter[i]);
-        }
+        platzhalter_aktualisieren();
     }
 }
 
@@ -104,5 +111,12 @@ function check_loose() {
     if (fehler_zähler === 11) {
         let text = document.getElementById("Text");
         text.innerHTML = "Leider verloren!"
+    }
+}
+
+function platzhalter_aktualisieren() {
+    platzhalter_alt = [];
+    for (let i = 0; i < platzhalter.length; i++) {
+        platzhalter_alt.push(platzhalter[i]);
     }
 }
