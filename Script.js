@@ -27,6 +27,7 @@ function Berechnen()
    var createA = document.createElement("p");
    createA.innerHTML = "---------------------";
    div.appendChild(createA);
+   clear_input();
   }
   else
   {
@@ -43,14 +44,23 @@ function Berechnen()
    var createA = document.createElement("p");
    createA.innerHTML = "---------------------";
    div.appendChild(createA);
+   clear_input();
   }
    //debug
    console.log(speicher);
    console.log(speicher.length);
 }
+
+//Automatisches löschen des Platzhalters im Gradwertrechner
+function clear_input() {
+    document.getElementById("Gradwerte").value = '';
+    document.getElementById("Gradwerte").placeholder = "Gradwert";
+}
   //Speicher für Diverenzberechnung und Anzeige
   var speicher = [];
   var gradspeicher = [];
+
+
 
 //Bohrerdrehzahlrechner
 function drehzahlberechnung()
@@ -83,6 +93,8 @@ console.log(vadrehzahl);
 console.log(h2drehzahl);
 console.log(edelstahl);
 }
+
+
 
 //Blech-Gewicht-rechner
 function gewichtrechner()
@@ -119,6 +131,8 @@ function gewichtrechner()
   console.log (h2_gewicht);
 }
 
+
+
 //Kreissegmentbrechnung
 function Kreissegmentbrechnung()
 {
@@ -146,6 +160,8 @@ function Kreissegmentbrechnung()
   console.log(Math.sin(bogenmaß));
   console.log(ergebnisGerundet);
 }
+
+
 
 //iso Gewinde Tabelle
 function isoGewindeTabelle()
@@ -239,7 +255,13 @@ function isoGewindeTabelle()
       break;
     case 64: M64.tabellenAnzeige();
       break;
-    default: A1.innerHTML = "Ihr metrisches Gewinde wurde nicht gefunden! Bitte versuchen Sie es erneut."
+      default:
+          A1.innerHTML = "Ihr metrisches Gewinde wurde nicht gefunden! Bitte versuchen Sie es erneut."
+          A2.innerHTML = null;
+          A3.innerHTML = null;
+          A4.innerHTML = null;
+          A5.innerHTML = null;
+          A6.innerHTML = null;
   }
 
   //debug

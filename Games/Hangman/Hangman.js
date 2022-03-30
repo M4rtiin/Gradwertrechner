@@ -43,13 +43,14 @@ function game() {
         console.log(platzhalter_alt);
         console.log(buchstaben);
         console.log(fehler_zähler);
+        console.log(check_win);
     }
 }
 
 function random() {
     let random_nummer = Math.ceil(Math.random() * 100);
     let random_wort = wort_speicher[random_nummer];
-    wort = random_wort;
+    wort = random_wort.split('');
     clear_input();
     for (let i = 0; i < wort.length; i++) {
         platzhalter.push("_");
@@ -97,7 +98,7 @@ function platzhalter_anzeige() {
 
 function check_win() {
     let text = document.getElementById("Text");
-    if (JSON.stringify(wort) === JSON.stringify(platzhalter)) {
+    if (JSON.stringify(wort) == JSON.stringify(platzhalter)) {
         text.innerHTML = "Gewonnen!";
     }
 }
