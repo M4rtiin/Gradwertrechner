@@ -7,39 +7,40 @@
   <title>Gradrechner</title>
  </head>
  <body>
-  <div id="header">
-   <ul id="nav">
-    <li><h2><a href="../index.html">Startseite</a></h2></li>
-    <li><h2><a href="Gradwertrechner.html">Gradwert-Rechner</a><h2></li>
-    <li><h2><a href="Bohrerdrehzahl.html">Bohrerdrehzahl-Rechner</a></h2></il>
-    <li><h2><a href="Blech-Gewicht-Rechner.html">Blech-Gewicht-Rechner</a></h2></li>
-    <li><h2><a href="Kreissegment-Rechner.html">Kreissegment-Rechner</a></<h2></li>
-   </ul>
-  </div>
-  <!--Radius Eingabe -->
-  <div id="Eingabe1">
-    <h2>Geben Sie ihren Kreisdurchmesser an (in mm)</h2>
-      <input style="height:30px"; type="tel" placeholder="Kreisdurchmesser" id="KreisdurchmesserE">
-  </div>
-  <!--Teilungs Eingabe -->
-  <div id="Eingabe2">
-    <h2>Geben Sie ihre Teilung an</h2>
-    <input style="height:30px"; type="tel" placeholder="Kreisteilung" id="KreisteilungE">
-    <button onclick="Kreissegmentbrechnung()">Berechnen</button> <br>
-  </div>
+     <button id="headerButton" onclick="Navi()">Navi</button>
+     <div id="header">
+         <ul id="nav">
+             <li><h2><a href="../index.html">Startseite</a></h2></li>
+             <li><h2><a href="Gradwertrechner.html">Gradwert-Rechner</a><h2></li>
+             <li><h2><a href="Bohrerdrehzahl.html">Bohrerdrehzahl-Rechner</a></h2></il>
+             <li><h2><a href="Blech-Gewicht-Rechner.html">Blech-Gewicht-Rechner</a></h2></li>
+             <li><h2><a href="Kreissegment-Rechner.html">Kreissegment-Rechner</a></<h2></li>
+         </ul>
+     </div>
+     <!--Radius Eingabe -->
+     <div id="Eingabe1">
+         <h2>Geben Sie ihren Kreisdurchmesser an (in mm)</h2>
+         <input style="height:30px" ; type="tel" placeholder="Kreisdurchmesser" id="KreisdurchmesserE">
+     </div>
+     <!--Teilungs Eingabe -->
+     <div id="Eingabe2">
+         <h2>Geben Sie ihre Teilung an</h2>
+         <input style="height:30px" ; type="tel" placeholder="Kreisteilung" id="KreisteilungE">
+         <button onclick="Kreissegmentbrechnung()">Berechnen</button> <br>
+     </div>
 
-  <!--Enterbutton Trigger-->
-   <script>
-   document.addEventListener ('keypress', function(e){
-     if (e.key === 'Enter'){
-       Kreissegmentbrechnung();
-     }
-   });
-   </script>
+     <!--Enterbutton Trigger-->
+     <script>
+         document.addEventListener('keypress', function (e) {
+             if (e.key === 'Enter') {
+                 Kreissegmentbrechnung();
+             }
+         });
+     </script>
 
-  <!--Ergebnis -->
-  <div id="Anzeige">
-    <a id="Längenanzeige"> </a>
-  </div>
+     <!--Ergebnis -->
+     <div id="Anzeige">
+         <a id="Längenanzeige"> </a>
+     </div>
  </body>
 </html>

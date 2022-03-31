@@ -7,40 +7,45 @@
   <title>Gradrechner</title>
  </head>
  <body>
-  <div id="header">
-   <ul id="nav">
-    <li><h2><a href="../index.html">Startseite</a></h2></li>
-    <li><h2><a href="Gradwertrechner.html">Gradwert-Rechner</a><h2></li>
-    <li><h2><a href="Bohrerdrehzahl.html">Bohrerdrehzahl-Rechner</a></h2></il>
-    <li><h2><a href="Blech-Gewicht-Rechner.html">Blech-Gewicht-Rechner</a></h2></li>
-    <li><h2><a href="Kreissegment-Rechner.html">Kreissegment-Rechner</a></<h2></li>
-   </ul>
-  </div>
-  <div id="Eingabe1">
-    <h2>Gib deine Blechabmaße, in mm, an:</h2>
-    <input style="height:30px"; type="tel" placeholder="Blech Breite" id="blechbreite"><br>
-    <input style="height:30px"; type="tel" placeholder="Blech Länge" id="blechlänge"><br>
-    <input style="height:30px"; type="tel" placeholder="Blech Dicke" id="blechdicke"><br><br>
-    <button onclick="gewichtrechner()">Berechnen</button> <br>
-    <p id="blechabmaße"> </p>
-  </div>
-  <div id="Eingabe2">
-    <h2>Gib dein Material an</h2>
-    <h3><input style="height: 20px; width: 20px;" type="checkbox" id="vag">
-    <label for="va">Edelstahl</label><br></h3>
-    <h3><input style="height: 20px; width: 20px;" type="checkbox" id="h2g">
-    <label for="h2">H2 Stahl</label></h3>
-  </div>
-  <!--Enterbutton Trigger-->
-   <script>
-   document.addEventListener ('keypress', function(e){
-     if (e.key === 'Enter'){
-       gewichtrechner();
-     }
-   });
-   </script>
+     <button id="headerButton" onclick="Navi()">Navi</button>
+     <div id="header">
+         <ul id="nav">
+             <li><h2><a href="../index.html">Startseite</a></h2></li>
+             <li><h2><a href="Gradwertrechner.html">Gradwert-Rechner</a><h2></li>
+             <li><h2><a href="Bohrerdrehzahl.html">Bohrerdrehzahl-Rechner</a></h2></il>
+             <li><h2><a href="Blech-Gewicht-Rechner.html">Blech-Gewicht-Rechner</a></h2></li>
+             <li><h2><a href="Kreissegment-Rechner.html">Kreissegment-Rechner</a></<h2></li>
+         </ul>
+     </div>
+     <div id="Eingabe1">
+         <h2>Gib deine Blechabmaße, in mm, an:</h2>
+         <input style="height:30px" ; type="tel" placeholder="Blech Breite" id="blechbreite"><br>
+         <input style="height:30px" ; type="tel" placeholder="Blech Länge" id="blechlänge"><br>
+         <input style="height:30px" ; type="tel" placeholder="Blech Dicke" id="blechdicke"><br><br>
+         <button onclick="gewichtrechner()">Berechnen</button> <br>
+         <p id="blechabmaße"> </p>
+     </div>
+     <div id="Eingabe2">
+         <h2>Gib dein Material an</h2>
+         <h3>
+             <input style="height: 20px; width: 20px;" type="checkbox" id="vag">
+             <label for="va">Edelstahl</label><br>
+         </h3>
+         <h3>
+             <input style="height: 20px; width: 20px;" type="checkbox" id="h2g">
+             <label for="h2">H2 Stahl</label>
+         </h3>
+     </div>
+     <!--Enterbutton Trigger-->
+     <script>
+         document.addEventListener('keypress', function (e) {
+             if (e.key === 'Enter') {
+                 gewichtrechner();
+             }
+         });
+     </script>
 
-  <div id="Anzeige">
-    <a id=gewichtanzeige> </a>
+     <div id="Anzeige">
+         <a id=gewichtanzeige> </a>
  </body>
 </html>

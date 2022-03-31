@@ -7,42 +7,42 @@
   <title>Tic-Tac-Toe</title>
  </head>
  <body>
+     <button id="headerButton" onclick="Navi()">Navi</button>
+     <div id="header">
+         <ul id="nav">
+             <li><h2><a href="../../index.html">Startseite</a></h2></li>
+             <li><h2><a href="Tic-Tac-Toe.html">Tic-Tac-Toe</a></h2></li>
+             <li><h2><a href="../Hangman/Hangman.html">Hangman</a></h2></li>
+         </ul>
+     </div>
 
-  <div id="header">
-   <ul id="nav">
-    <li><h2><a href="../../index.html">Startseite</a></h2></li>
-    <li><h2><a href="Tic-Tac-Toe.html">Tic-Tac-Toe</a></h2></li>
-    <li><h2><a href="../Hangman/Hangman.html">Hangman</a></h2></li>
-   </ul>
-  </div>
+     <div id="Timeline">
+         <a><h2>Timer:</h2></a>
+         <input style="height:30px" value="3" type="tel" placeholder="Timer" id="Timer"><br />
+     </div>
 
-  <div id="Timeline">
-    <a><h2>Timer:</h2></a>
-    <input style="height:30px" value="3" type="tel" placeholder="Timer" id="Timer"><br/>
-  </div>
+     <div>
+         <h2 id="Anzeige"> </h2>
+     </div>
 
-  <div>
-    <h2 id="Anzeige"> </h2>
-  </div>
-
-  <div id="Board">
-    <div id="line1">
-      <button id="B1" type="button" name="button" onclick="Bf1(); main()"></button>
-      <button id="B2" type="button" name="button" onclick="Bf2(); main()"></button>
-      <button id="B3" type="button" name="button" onclick="Bf3(); main()"></button><br>
-    </div>
-    <div id="line2">
-      <button id="B4" type="button" name="button" onclick="Bf4(); main()"></button>
-      <button id="B5" type="button" name="button" onclick="Bf5(); main()"></button>
-      <button id="B6" type="button" name="button" onclick="Bf6(); main()"></button><br>
-    </div>
-    <div id="line3">
-      <button id="B7" type="button" name="button" onclick="Bf7(); main()"></button>
-      <button id="B8" type="button" name="button" onclick="Bf8(); main()"></button>
-      <button id="B9" type="button" name="button" onclick="Bf9(); main()"></button><br><br>
-      <a id="anzeigeBlau"></a><br>
-      <a id="anzeigeGrün"></a><br>
-    </div>
-  </div>
+     <div id="Board">
+         <div id="line1">
+             <button id="B1" type="button" name="button" onclick="Bf1(); main()"></button>
+             <button id="B2" type="button" name="button" onclick="Bf2(); main()"></button>
+             <button id="B3" type="button" name="button" onclick="Bf3(); main()"></button><br>
+         </div>
+         <div id="line2">
+             <button id="B4" type="button" name="button" onclick="Bf4(); main()"></button>
+             <button id="B5" type="button" name="button" onclick="Bf5(); main()"></button>
+             <button id="B6" type="button" name="button" onclick="Bf6(); main()"></button><br>
+         </div>
+         <div id="line3">
+             <button id="B7" type="button" name="button" onclick="Bf7(); main()"></button>
+             <button id="B8" type="button" name="button" onclick="Bf8(); main()"></button>
+             <button id="B9" type="button" name="button" onclick="Bf9(); main()"></button><br><br>
+             <a id="anzeigeBlau"></a><br>
+             <a id="anzeigeGrün"></a><br>
+         </div>
+     </div>
  </body>
 </html>

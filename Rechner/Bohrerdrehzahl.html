@@ -7,43 +7,48 @@
   <title>Gradrechner</title>
  </head>
  <body>
-  <div id="header">
-   <ul id="nav">
-    <li><h2><a href="../index.html">Startseite</a></h2></li>
-    <li><h2><a href="Gradwertrechner.html">Gradwert-Rechner</a></h2></li>
-    <li><h2><a href="Bohrerdrehzahl.html">Bohrerdrehzahl-Rechner</a></h2></li>
-    <li><h2><a href="Blech-Gewicht-Rechner.html">Blech-Gewicht-Rechner</a></h2></li>
-    <li><h2><a href="Kreissegment-Rechner.html">Kreissegment-Rechner</a></<h2></li>
-   </ul>
-  </div>
-<!--Bohrerdurchmessereingabe Eingabe 1 -->
-  <div id="Eingabe1">
-    <h2>Gib deinen Bohrerdurchmesser an:</h2>
-    <input style="height:30px"; type="tel" placeholder="Bohrerdurchmesser" id="bohrereingabe">
-    <button onclick="drehzahlberechnung()">Berechnen</button> <br>
-    <p id="durchmesseranzeige"> </p>
-  </div>
-<!--Materialeingabe Eingabe 2 -->
-  <div id="Eingabe2">
-    <h2>Gib dein zu Bohrendes Material an:</h2>
-    <h3><input style="height: 20px; width: 20px;" type="checkbox" id="va">
-    <label for="va">Edelstahl</label><br></h3>
-    <h3><input style="height: 20px; width: 20px;" type="checkbox" id="h2">
-    <label for="h2">H2 Stahl</label></h3>
-  </div>
+     <button id="headerButton" onclick="Navi()">Navi</button>
+     <div id="header">
+         <ul id="nav">
+             <li><h2><a href="../index.html">Startseite</a></h2></li>
+             <li><h2><a href="Gradwertrechner.html">Gradwert-Rechner</a></h2></li>
+             <li><h2><a href="Bohrerdrehzahl.html">Bohrerdrehzahl-Rechner</a></h2></li>
+             <li><h2><a href="Blech-Gewicht-Rechner.html">Blech-Gewicht-Rechner</a></h2></li>
+             <li><h2><a href="Kreissegment-Rechner.html">Kreissegment-Rechner</a></<h2></li>
+         </ul>
+     </div>
+     <!--Bohrerdurchmessereingabe Eingabe 1 -->
+     <div id="Eingabe1">
+         <h2>Gib deinen Bohrerdurchmesser an:</h2>
+         <input style="height:30px" ; type="tel" placeholder="Bohrerdurchmesser" id="bohrereingabe">
+         <button onclick="drehzahlberechnung()">Berechnen</button> <br>
+         <p id="durchmesseranzeige"> </p>
+     </div>
+     <!--Materialeingabe Eingabe 2 -->
+     <div id="Eingabe2">
+         <h2>Gib dein zu Bohrendes Material an:</h2>
+         <h3>
+             <input style="height: 20px; width: 20px;" type="checkbox" id="va">
+             <label for="va">Edelstahl</label><br>
+         </h3>
+         <h3>
+             <input style="height: 20px; width: 20px;" type="checkbox" id="h2">
+             <label for="h2">H2 Stahl</label>
+         </h3>
+     </div>
 
-  <!--Enterbutton Trigger-->
-   <script>
-   document.addEventListener ('keypress', function(e){
-     if (e.key === 'Enter'){
-       drehzahlberechnung();
-     }
-   });
-   </script>
+     <!--Enterbutton Trigger-->
+     <script>
+         document.addEventListener('keypress', function (e) {
+             if (e.key === 'Enter') {
+                 drehzahlberechnung();
+             }
+         });
+     </script>
 
-<!--bohrerdrehzahlanzeige-->
-  <div id="Anzeige">
-    <a id=bohrerdrehzahlanzeige> </a>
-  </div>
+     <!--bohrerdrehzahlanzeige-->
+     <div id="Anzeige">
+         <a id=bohrerdrehzahlanzeige> </a>
+     </div>
  </body>
 </html>

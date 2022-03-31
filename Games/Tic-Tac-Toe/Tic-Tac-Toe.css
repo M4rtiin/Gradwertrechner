@@ -19,6 +19,16 @@ body {
 	padding-right: 40px;
 }
 
+#headerButton {
+	border-radius: 10px;
+	background: linear-gradient(45deg, #0000FF, #008000);
+	color: black;
+	font-weight: bold;
+	margin-bottom: 20px;
+	width: 90px;
+	height: 40px;
+}
+
 #B1, #B2, #B3, #B4, #B5, #B6, #B7, #B8, #B9 {
   height: 70px;
   width: 70px;

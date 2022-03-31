@@ -1,4 +1,19 @@
 
+
+//Header
+var headerV = true;
+
+function Navi() {
+    if (headerV == true) {
+        document.getElementById("header").style.display = "none";
+        headerV = false;
+    }
+    else {
+        document.getElementById("header").removeAttribute("style");
+        headerV = true;
+    }
+}
+
 var B1 = 0;
 var B2 = 0;
 var B3 = 0;

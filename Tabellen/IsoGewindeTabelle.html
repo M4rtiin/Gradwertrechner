@@ -7,37 +7,38 @@
   <title>Gradrechner</title>
  </head>
  <body>
-  <div id="header">
-   <ul id="nav">
-    <li><h2><a href="../index.html">Startseite</a></h2></li>
-    <li><h2><a href="IsoGewindeTabelle.html">Iso-Gewinde-Tabelle</a></h2></li>
-   </ul>
-  </div>
+     <button id="headerButton" onclick="Navi()">Navi</button>
+     <div id="header">
+         <ul id="nav">
+             <li><h2><a href="../index.html">Startseite</a></h2></li>
+             <li><h2><a href="IsoGewindeTabelle.html">Iso-Gewinde-Tabelle</a></h2></li>
+         </ul>
+     </div>
 
-  <!--Radius Eingabe -->
-  <div id="Eingabe1">
-    <h2>Geben Sie hier ihr gewünschtes metrisches Gewinde ein</h2>
-      <a>M: </a><input style="height:30px"; type="tel" placeholder="Iso Gewinde" id="isoGewindeE">
-      <button id="GewindeButton" onclick="isoGewindeTabelle()">Anzeigen</button> <br>
-  </div>
+     <!--Radius Eingabe -->
+     <div id="Eingabe1">
+         <h2>Geben Sie hier ihr gewünschtes metrisches Gewinde ein</h2>
+         <a>M: </a><input style="height:30px" ; type="tel" placeholder="Iso Gewinde" id="isoGewindeE">
+         <button id="GewindeButton" onclick="isoGewindeTabelle()">Anzeigen</button> <br>
+     </div>
 
-  <!--Enterbutton Trigger-->
-   <script>
-   document.addEventListener ('keypress', function(e){
-     if (e.key === 'Enter'){
-       isoGewindeTabelle();
-     }
-   });
-   </script>
+     <!--Enterbutton Trigger-->
+     <script>
+         document.addEventListener('keypress', function (e) {
+             if (e.key === 'Enter') {
+                 isoGewindeTabelle();
+             }
+         });
+     </script>
 
-  <!--Ergebnis -->
-  <div id="Anzeige">
-    <a id="A1"> </a><br>
-    <a id="A2"> </a><br>
-    <a id="A3"> </a><br>
-    <a id="A4"> </a><br>
-    <a id="A5"> </a><br>
-    <a id="A6"> </a><br>
-  </div>
+     <!--Ergebnis -->
+     <div id="Anzeige">
+         <a id="A1"> </a><br>
+         <a id="A2"> </a><br>
+         <a id="A3"> </a><br>
+         <a id="A4"> </a><br>
+         <a id="A5"> </a><br>
+         <a id="A6"> </a><br>
+     </div>
  </body>
 </html>
