@@ -1,4 +1,20 @@
 
+//Header
+var headerV = true;
+
+function sers() {
+    if (headerV == true) {
+        document.getElementById("header").style.display = "none";
+        headerV = false;
+    }
+    else {
+        document.getElementById("header").removeAttribute("style");
+        headerV = true;
+        }
+}
+
+
+
 //Gradwertrechner
 function Berechnen()
 {
