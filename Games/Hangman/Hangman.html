@@ -8,37 +8,47 @@
  </head>
  <body>
 
-  <div id="header">
-   <ul id="nav">
-    <li><h2><a href="../../index.html">Startseite</a></h2></li>
-    <li><h2><a href="../Tic-Tac-Toe/Tic-Tac-Toe.html">Tic-Tac-Toe</a></h2></li>
-    <li><h2><a href="Hangman.html">Hangman</a></h2></li>
-   </ul>
-  </div>
+     <div id="header">
+         <ul id="nav">
+             <li><h2><a href="../../index.html">Startseite</a></h2></li>
+             <li><h2><a href="../Tic-Tac-Toe/Tic-Tac-Toe.html">Tic-Tac-Toe</a></h2></li>
+             <li><h2><a href="Hangman.html">Hangman</a></h2></li>
+         </ul>
+     </div>
 
-  <div id="Game">
-      <div>
-          <h2><a id="Text"></a></h2>
-      </div>
+     <div id="Game">
+         <div>
+             <h2><a id="Text"></a></h2>
+         </div>
 
-      <div>
-          <input type="text" placeholder="Worteingabe" id="Eingabe">
-          <button onclick="game()">Bestätigen</button>
-          <button id="random_button" onclick="random()">Zufällig</button><br>
-      </div>   
+         <div>
+             <input type="text" placeholder="Worteingabe" id="Eingabe">
+             <button onclick="game()">Bestätigen</button>
+             <button id="random_button" onclick="random()">Zufällig</button><br>
+         </div>
 
-      <div>
-          <h1><a id="Wort"></a></h1>
-      </div>
+         <div>
+             <h1><a id="Wort"></a></h1>
+         </div>
 
-      <div id="Leinwand">
-          <canvas id="canvas" width="250" height="250"></canvas>
-      </div>
-  </div>
+         <div id="Leinwand">
+             <canvas id="canvas" width="250" height="250"></canvas>
+         </div>
+     </div>
+
+     <!--Enterbutton Trigger-->
+     <script>
+         document.addEventListener('keypress', function (e) {
+             if (e.key === 'Enter') {
+                 game();
+             }
+         });
+     </script>
 
      <script src="Hangman2.js" charset="UTF-8"></script>
-     <script>var start_text = document.getElementById("Text");
-             start_text.innerHTML = "Bitte Wort eingeben";
+     <script>
+    var start_text = document.getElementById("Text");
+         start_text.innerHTML = "Bitte Wort eingeben";
      </script>
  </body>
 </html>
