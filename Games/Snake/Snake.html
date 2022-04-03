@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html>
- <head>
-  <link rel="stylesheet" href="Snake.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <script src="Snake.js" charset="UTF-8"></script>
-  <title>Snake</title>
- </head>
- <body>
+<head>
+    <link rel="stylesheet" href="Snake.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Snake</title>
+</head>
+<body>
 
-     <button id="headerButton" onclick="Navi()">Navi</button>
+    <button id="headerButton" onclick="Navi()">Navi</button>
 
-     <div id="header">
-         <ul id="nav">
-             <li><h2><a href="../../index.html">Startseite</a></h2></li>
-             <li><h2><a href="../Tic-Tac-Toe/Tic-Tac-Toe.html">Tic-Tac-Toe</a></h2></li>
-             <li><h2><a href="../Hangman/Hangman.html">Hangman</a></h2></li>
-             <li><h2><a href="Snake.html">Snake</a></h2></li>
-         </ul>
-     </div>
+    <div id="header">
+        <ul id="nav">
+            <li><h2><a href="../../index.html">Startseite</a></h2></li>
+            <li><h2><a href="../Tic-Tac-Toe/Tic-Tac-Toe.html">Tic-Tac-Toe</a></h2></li>
+            <li><h2><a href="../Hangman/Hangman.html">Hangman</a></h2></li>
+            <li><h2><a href="Snake.html">Snake</a></h2></li>
+        </ul>
+    </div>
 
-     <div id="Game">
-         <div>
-             <h2><a id="score">Score: 36</a></h2>
-         </div>
+    <div id="Game">
+        <div>
+            <h2><a id="score">Score: 36</a></h2>
+        </div>
 
-         <div>
-             <button onclick="game()">Spiel starten</button>
-         </div>
+        <div>
+            <button onclick="freeBodypixel()">Spiel starten</button>
+        </div>
 
-         <div id="Leinwand">
-             <canvas id="canvas" width="300" height="300"></canvas>
-         </div>
-     </div>
- </body>
+        <div id="Leinwand">
+            <canvas id="canvas" width="300" height="300"></canvas>
+        </div>
+    </div>
+    <div>
+    <script src="Snake.js" charset="UTF-8"></script>
+    </div>
+</body>
 </html>
