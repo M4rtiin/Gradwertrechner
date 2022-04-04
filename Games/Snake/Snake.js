@@ -29,7 +29,7 @@ var right = 0;
 var left = 0;
 var up = 0;
 var down = 15;
-var test = 0;
+window.addEventListener("keydown", move, false);
 
 //image Sammlung
 var canvas = document.getElementById("canvas");
@@ -39,23 +39,25 @@ snakeimg.src = 'img/Snake.png';
 const freePixelimg = new Image();
 freePixelimg.src = 'img/freePixel.png';
 
-
 function gameloop() {
-   var interval =  setInterval(game, 1000);
-}
+    const myInterval = window.setInterval(game, 700);
 
-function game() {
+    function game() {
         freeBodypixel();
         snake();
         bodypixelMatch();
         draw();
+        if (loose) {
+            clearTimeout(myInterval);
+        }
 
         //debug
         console.log(freePixelStandort);;
         console.log(snakePixelStandortX);
         console.log(snakePixelStandortY);
         console.log(score);
-     
+
+    }
 }
 
 function freeBodypixel() {
@@ -110,7 +112,7 @@ function bodypixelMatch() {
     }
     for (let i = 0; i < snakePixelStandortX.length-1; i++) {
         if (snakePixelStandortX[snakePixelStandortX.length - 1] == snakePixelStandortX[i] && snakePixelStandortY[snakePixelStandortY.length - 1] == snakePixelStandortY[i]) {
-            clearInterval(interval);
+            loose = true;
         }
     }
 }
@@ -122,6 +124,47 @@ function draw() {
     }
     ctx.drawImage(freePixelimg, freePixelStandort[0], freePixelStandort[1]);
     scoreAnzeige.innerHTML = "Score: " + score;
+}
+
+function move(key) {
+    if (key.keyCode == "39") {
+        right = 15;
+        left = 0;
+        up = 0;
+        down = 0;
+    }
+    if (key.keyCode == "37") {
+        right = 0;
+        left = 15;
+        up = 0;
+        down = 0;
+    }
+    if (key.keyCode == "38") {
+        right = 0;
+        left = 0;
+        up = 15;
+        down = 0;
+    }
+    if (key.keyCode == "40") {
+        right = 0;
+        left = 0;
+        up = 0;
+        down = 15;
+    }
+}
+
+function restart() {
+    score = 0;
+    scoreAlt = 0;
+    freePixelStandort = [0];
+    snakePixelStandortX = [0, 15, 15];
+    snakePixelStandortY = [0, 0, 15];
+    loose = false;
+    right = 0;
+    left = 0;
+    up = 0;
+    down = 15;
+    gameloop();
 }
 
 /*
