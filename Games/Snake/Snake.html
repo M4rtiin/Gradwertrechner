@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script type="text/javascript" src="jQuery.js"></script>
     <link rel="stylesheet" href="Snake.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Snake</title>
@@ -20,11 +21,11 @@
 
     <div id="Game">
         <div>
-            <h2><a id="score">Score: 24</a></h2>
+            <h2><a id="score"></a></h2>
         </div>
 
         <div>
-            <button onclick="game()">Spiel starten</button>
+            <button onclick="gameloop()">Spiel starten</button>
         </div>
 
         <div id="Leinwand">
