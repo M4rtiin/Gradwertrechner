@@ -42,6 +42,7 @@ function gameloop() {
         document.getElementById("header").style.display = "none";
         headerV = false;
     }
+    document.querySelector("body").style.overscrollBehavior = "contain";
 
     const myInterval = window.setInterval(game, 250);
 
