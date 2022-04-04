@@ -31,11 +31,17 @@ function handleTouchMove(evt) {
 
     if (Math.abs(xDiff) > Math.abs(yDiff)) {/*most significant*/
         if (xDiff > 0) {
+            if (right == 15) {
+                return;
+            }
             right = 0;
             left = 15;
             up = 0;
             down = 0;
         } else {
+            if (left == 15) {
+                return;
+            }
             right = 15;
             left = 0;
             up = 0;
@@ -43,11 +49,17 @@ function handleTouchMove(evt) {
         }
     } else {
         if (yDiff > 0) {
+            if (down == 15) {
+                return;
+            }
             right = 0;
             left = 0;
             up = 15;
             down = 0;
         } else {
+            if (up == 15) {
+                return;
+            }
             right = 0;
             left = 0;
             up = 0;
