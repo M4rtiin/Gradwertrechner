@@ -21,8 +21,8 @@ var scoreAnzeige = document.getElementById("score");
 var score = 0;
 var scoreAlt = 0;
 var freePixelStandort = [0];
-var snakePixelStandortX = [0,15,15];
-var snakePixelStandortY = [0, 0, 15];
+var snakePixelStandortX = [0];
+var snakePixelStandortY = [0];
 var loose = false;
 var laufrichtung = 0;
 var right = 0;
@@ -40,7 +40,7 @@ const freePixelimg = new Image();
 freePixelimg.src = 'img/freePixel.png';
 
 function gameloop() {
-    const myInterval = window.setInterval(game, 700);
+    const myInterval = window.setInterval(game, 500);
 
     function game() {
         freeBodypixel();
@@ -167,22 +167,3 @@ function restart() {
     gameloop();
 }
 
-/*
-jQuery(document).ready(function () {
-    $(document).on('swipeleft', getLeft);
-    $(document).on('swiperight', getRight);
-
-    function getLeft() {
-        left = 15;
-        right = 0;
-        up = 0;
-        down = 0;
-    }
-    function getRight() {
-        left = 0;
-        right = 15;
-        up = 0;
-        down = 0;
-    }
-});
-*/
