@@ -38,7 +38,11 @@ const freePixelimg = new Image();
 freePixelimg.src = 'img/freePixel.png';
 
 function gameloop() {
-    Navi();
+    if (headerV == true) {
+        document.getElementById("header").style.display = "none";
+        headerV = false;
+    }
+
     const myInterval = window.setInterval(game, 500);
 
     function game() {
@@ -173,8 +177,8 @@ function restart() {
     score = 0;
     scoreAlt = 0;
     freePixelStandort = [0];
-    snakePixelStandortX = [0, 15, 15];
-    snakePixelStandortY = [0, 0, 15];
+    snakePixelStandortX = [0];
+    snakePixelStandortY = [0];
     loose = false;
     right = 0;
     left = 0;
