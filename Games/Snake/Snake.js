@@ -1,7 +1,6 @@
 
 //Header
 var headerV = true;
-
 function Navi() {
     if (headerV == true) {
         document.getElementById("header").style.display = "none";
@@ -18,13 +17,12 @@ function Navi() {
 
 //Varibel Sammlung
 var scoreAnzeige = document.getElementById("score");
-var score = 1;
+var score = 0;
 var scoreAlt = 0;
 var freePixelStandort = [0];
 var snakePixelStandortX = [0];
 var snakePixelStandortY = [0];
 var loose = false;
-var laufrichtung = 0;
 var right = 0;
 var left = 0;
 var up = 0;
@@ -40,6 +38,7 @@ const freePixelimg = new Image();
 freePixelimg.src = 'img/freePixel.png';
 
 function gameloop() {
+    Navi();
     const myInterval = window.setInterval(game, 500);
 
     function game() {
@@ -66,6 +65,11 @@ function freeBodypixel() {
         var randomY = Math.ceil(Math.random() * 100 / 5) * 15;
         freePixelStandort.pop();
         freePixelStandort.push(randomX, randomY);
+        for (let i = 0; i < snakePixelStandortX.length; i++) {
+            if (freeBodypixel[0] == snakePixelStandortX[i] && freeBodypixel[1] == snakePixelStandortY[i]) {
+                freeBodypixel();
+            }
+        }
     }
     return;
 }
@@ -128,24 +132,36 @@ function draw() {
 
 function move(key) {
     if (key.keyCode == "39") {
+        if (left == 15) {
+            return;
+        }
         right = 15;
         left = 0;
         up = 0;
         down = 0;
     }
     if (key.keyCode == "37") {
+        if (right == 15) {
+            return;
+        }
         right = 0;
         left = 15;
         up = 0;
         down = 0;
     }
     if (key.keyCode == "38") {
+        if (down == 15) {
+            return;
+        }
         right = 0;
         left = 0;
         up = 15;
         down = 0;
     }
     if (key.keyCode == "40") {
+        if (up == 15) {
+            return;
+        }
         right = 0;
         left = 0;
         up = 0;
