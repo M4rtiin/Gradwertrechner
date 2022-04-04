@@ -43,7 +43,7 @@ function gameloop() {
         headerV = false;
     }
 
-    const myInterval = window.setInterval(game, 500);
+    const myInterval = window.setInterval(game, 250);
 
     function game() {
         freeBodypixel();
