@@ -18,7 +18,7 @@ function Navi() {
 
 //Varibel Sammlung
 var scoreAnzeige = document.getElementById("score");
-var score = 0;
+var score = 1;
 var scoreAlt = 0;
 var freePixelStandort = [0];
 var snakePixelStandortX = [0];
