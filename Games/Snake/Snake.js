@@ -24,9 +24,9 @@ var snakePixelStandortX = [0];
 var snakePixelStandortY = [0];
 var loose = false;
 var right = 0;
-var left = 0;
+var left = 15;
 var up = 0;
-var down = 15;
+var down = 0;
 window.addEventListener("keydown", move, false);
 
 //image Sammlung
