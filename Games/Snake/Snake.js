@@ -27,7 +27,7 @@ var right = 0;
 var left = 0;
 var up = 0;
 var down = 15;
-window.addEventListener("keydown", move, false);
+var richtungAngegeben = true;
 
 //image Sammlung
 var canvas = document.getElementById("canvas");
@@ -37,13 +37,19 @@ snakeimg.src = 'img/Snake.png';
 const freePixelimg = new Image();
 freePixelimg.src = 'img/freePixel.png';
 
+
 function gameloop() {
+
+    //Header ausschalten
     if (headerV == true) {
         document.getElementById("header").style.display = "none";
         headerV = false;
     }
+
+    //Ausschalten der drag-down-refresh funtion
     document.querySelector("body").style.overscrollBehavior = "contain";
 
+    //Eigentlicher Gameloop
     const myInterval = window.setInterval(game, 250);
 
     function game() {
@@ -51,16 +57,17 @@ function gameloop() {
         snake();
         bodypixelMatch();
         draw();
+        richtungAngegeben = false;
         if (loose) {
             clearTimeout(myInterval);
         }
 
         //debug
-        console.log(freePixelStandort);;
-        console.log(snakePixelStandortX);
-        console.log(snakePixelStandortY);
-        console.log(score);
-
+        //console.log(freePixelStandort);;
+        //console.log(snakePixelStandortX);
+        //console.log(snakePixelStandortY);
+        //console.log(score);
+        //console.log(snakePixelStandortX.length);
     }
 }
 
@@ -72,6 +79,8 @@ function freeBodypixel() {
         freePixelStandort.push(randomX, randomY);
         for (let i = 0; i < snakePixelStandortX.length; i++) {
             if (freeBodypixel[0] == snakePixelStandortX[i] && freeBodypixel[1] == snakePixelStandortY[i]) {
+                freePixelStandort.pop();
+                freePixelStandort.push(0);
                 freeBodypixel();
             }
         }
@@ -133,45 +142,6 @@ function draw() {
     }
     ctx.drawImage(freePixelimg, freePixelStandort[0], freePixelStandort[1]);
     scoreAnzeige.innerHTML = "Score: " + score;
-}
-
-function move(key) {
-    if (key.keyCode == "39") {
-        if (left == 15) {
-            return;
-        }
-        right = 15;
-        left = 0;
-        up = 0;
-        down = 0;
-    }
-    if (key.keyCode == "37") {
-        if (right == 15) {
-            return;
-        }
-        right = 0;
-        left = 15;
-        up = 0;
-        down = 0;
-    }
-    if (key.keyCode == "38") {
-        if (down == 15) {
-            return;
-        }
-        right = 0;
-        left = 0;
-        up = 15;
-        down = 0;
-    }
-    if (key.keyCode == "40") {
-        if (up == 15) {
-            return;
-        }
-        right = 0;
-        left = 0;
-        up = 0;
-        down = 15;
-    }
 }
 
 function restart() {
