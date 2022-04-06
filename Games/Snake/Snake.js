@@ -63,32 +63,27 @@ function gameloop() {
         }
 
         //debug
-        //console.log(freePixelStandort);;
-        //console.log(snakePixelStandortX);
-        //console.log(snakePixelStandortY);
+        //console.log("SPX" + snakePixelStandortX[snakePixelStandortX.length - 1]);
+        //console.log("SPY" + snakePixelStandortY[snakePixelStandortY.length - 1]);
+        //console.log("FP" + freePixelStandort);
         //console.log(score);
         //console.log(snakePixelStandortX.length);
     }
 }
 
 function freeBodypixel() {
-    if (freePixelStandort == 0) {
+    if (freePixelStandort[0] == 0) {
         var randomX = Math.ceil(Math.random() * 100 / 5) * 15;
         var randomY = Math.ceil(Math.random() * 100 / 5) * 15;
-        freePixelStandort.pop();
+        freePixelStandort = [];
         freePixelStandort.push(randomX, randomY);
         for (let i = 0; i < snakePixelStandortX.length; i++) {
-            if (freeBodypixel[0] != snakePixelStandortX[i] || freeBodypixel[1] != snakePixelStandortY[i]) {
-                return;
-            }
-            else {
-                freePixelStandort.pop();
-                freePixelStandort.push(0);
+            if (freePixelStandort[0] == snakePixelStandortX[i] && freePixelStandort[1] == snakePixelStandortY[i]) {
+                freePixelStandort = [0];
                 freeBodypixel();
-                }
+            }
         }
     }
-    return;
 }
 
 function snake() {
