@@ -78,11 +78,14 @@ function freeBodypixel() {
         freePixelStandort.pop();
         freePixelStandort.push(randomX, randomY);
         for (let i = 0; i < snakePixelStandortX.length; i++) {
-            if (freeBodypixel[0] == snakePixelStandortX[i] && freeBodypixel[1] == snakePixelStandortY[i]) {
+            if (freeBodypixel[0] != snakePixelStandortX[i] || freeBodypixel[1] != snakePixelStandortY[i]) {
+                return;
+            }
+            else {
                 freePixelStandort.pop();
                 freePixelStandort.push(0);
                 freeBodypixel();
-            }
+                }
         }
     }
     return;
