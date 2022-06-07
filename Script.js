@@ -74,7 +74,21 @@ function clear_input() {
 }
   //Speicher für Diverenzberechnung und Anzeige
   var speicher = [];
-  var gradspeicher = [];
+var gradspeicher = [];
+
+//Speicherfunktionen
+function speichern() {
+    let speicher = document.getElementById("Anzeige").innerText;
+    localStorage.setItem("speicher", speicher);
+}
+function speicherAnzeige() {
+    Anzeige.innerHTML = localStorage.getItem("speicher");
+}
+
+function löschen() {
+    localStorage.removeItem("speicher");
+    document.location.reload();
+}
 
 
 
