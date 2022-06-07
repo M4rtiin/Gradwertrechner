@@ -40,14 +40,7 @@ freePixelimg.src = 'img/freePixel.png';
 
 function gameloop() {
 
-    //Header ausschalten
-    if (headerV == true) {
-        document.getElementById("header").style.display = "none";
-        headerV = false;
-    }
-
-    //Ausschalten der drag-down-refresh funtion
-    document.querySelector("body").style.overscrollBehavior = "contain";
+        firstStart();
 
     //Eigentlicher Gameloop
     const myInterval = window.setInterval(game, 250);
@@ -60,6 +53,9 @@ function gameloop() {
         richtungAngegeben = false;
         if (loose) {
             clearTimeout(myInterval);
+            if (localStorage.getItem("highscore") < score) {
+                localStorage.setItem("highscore", score);
+            }
         }
 
         //debug
@@ -156,3 +152,21 @@ function restart() {
     gameloop();
 }
 
+function firstStart() {
+    //Header ausschalten
+    if (headerV == true) {
+        document.getElementById("header").style.display = "none";
+        headerV = false;
+    }
+
+    //Ausschalten der drag-down-refresh funtion
+    document.querySelector("body").style.overscrollBehavior = "contain";
+
+    //Button visibility
+    const startButton = document.getElementById("start");
+    startButton.remove();
+    document.getElementById("restart").style.visibility = "visible";
+
+    //Highscore Anzeige
+    document.getElementById("highScore").innerHTML = "Highscore : " + localStorage.getItem("highscore");
+}
