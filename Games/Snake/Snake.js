@@ -28,6 +28,7 @@ var left = 0;
 var up = 0;
 var down = 15;
 var richtungAngegeben = true;
+var ersterStart = true;
 
 //image Sammlung
 var canvas = document.getElementById("canvas");
@@ -40,7 +41,12 @@ freePixelimg.src = 'img/freePixel.png';
 
 function gameloop() {
 
+    if (ersterStart) {
         firstStart();
+    }
+
+    //Highscore Anzeige
+    document.getElementById("highScore").innerHTML = "Highscore : " + localStorage.getItem("highscore");
 
     //Eigentlicher Gameloop
     const myInterval = window.setInterval(game, 250);
@@ -153,6 +159,8 @@ function restart() {
 }
 
 function firstStart() {
+
+    ersterStart = false;
     //Header ausschalten
     if (headerV == true) {
         document.getElementById("header").style.display = "none";
@@ -167,6 +175,4 @@ function firstStart() {
     startButton.remove();
     document.getElementById("restart").style.visibility = "visible";
 
-    //Highscore Anzeige
-    document.getElementById("highScore").innerHTML = "Highscore : " + localStorage.getItem("highscore");
 }

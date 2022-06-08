@@ -85,10 +85,6 @@ function speicherAnzeige() {
     Anzeige.innerHTML = localStorage.getItem("speicher");
 }
 
-function löschen() {
-    localStorage.removeItem("speicher");
-    document.location.reload();
-}
 
 
 
