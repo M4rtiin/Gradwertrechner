@@ -78,7 +78,7 @@ var gradspeicher = [];
 
 //Speicherfunktionen
 function speichern() {
-    let speicher = document.getElementById("Anzeige").innerText;
+    let speicher = document.getElementById("Anzeige").innerHTML;
     localStorage.setItem("speicher", speicher);
 }
 function speicherAnzeige() {
