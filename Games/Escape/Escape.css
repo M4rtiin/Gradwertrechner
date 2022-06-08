@@ -1,0 +1,57 @@
+
+body {
+  background-color: #2c2c2c;
+}
+#header {
+  background: linear-gradient(45deg, #0000FF, #008000);
+  border-radius: 50px;
+}
+#header a:hover {
+	color: white;
+}
+#header a {
+	color: black;
+}
+#nav {
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-bottom: 20px;
+	padding-right: 40px;
+}
+
+#Game {
+	padding-left: 10px;
+}
+
+#headerButton {
+	border-radius: 10px;
+	background: linear-gradient(45deg, #0000FF, #008000);
+	color: black;
+	font-weight: bold;
+	margin-bottom: 20px;
+	width: 90px;
+}
+
+button {
+	color: green;
+	border-radius: 20px;
+	height: 40px;
+}
+
+#Eingabe {
+	height: 40px;
+}
+
+#canvas{
+	background-color: darkseagreen;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+#start{
+	visibility: visible;
+}
+
+#restart{
+	visibility: hidden;
+}
