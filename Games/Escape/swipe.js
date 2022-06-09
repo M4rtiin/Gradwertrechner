@@ -34,20 +34,20 @@ function handleTouchMove(evt) {
 
     if (Math.abs(xDiff) > Math.abs(yDiff)) {/*most significant*/
         if (xDiff > 0) {
-            if (right == 10 || richtungAngegeben == true) {
+            if (right == geschw || richtungAngegeben == true) {
                 return;
             }
             right = 0;
-            left = 10;
+            left = geschw;
             up = 0;
             down = 0;
             richtungAngegeben = true;
         } else {
-            if (left == 10 || richtungAngegeben == true) {
+            if (left == geschw || richtungAngegeben == true) {
                 return;
             }
             else {
-                right = 10;
+                right = geschw;
                 left = 0;
                 up = 0;
                 down = 0;
@@ -56,22 +56,22 @@ function handleTouchMove(evt) {
         }
     } else {
         if (yDiff > 0) {
-            if (down == 10 || richtungAngegeben == true) {
+            if (down == geschw || richtungAngegeben == true) {
                 return;
             }
             right = 0;
             left = 0;
-            up = 10;
+            up = geschw;
             down = 0;
             richtungAngegeben = true;
         } else {
-            if (up == 10 || richtungAngegeben == true) {
+            if (up == geschw || richtungAngegeben == true) {
                 return;
             }
             right = 0;
             left = 0;
             up = 0;
-            down = 10;
+            down = geschw;
             richtungAngegeben = true;
         }
     }
@@ -82,43 +82,43 @@ function handleTouchMove(evt) {
 
 function move(key) {
     if (key.keyCode == "39") {
-        if (left == 10 || richtungAngegeben == true) {
+        if (left == geschw || richtungAngegeben == true) {
             return;
         }
-        right = 10;
+        right = geschw;
         left = 0;
         up = 0;
         down = 0;
         richtungAngegeben = true;
     }
     if (key.keyCode == "37") {
-        if (right == 10 || richtungAngegeben == true) {
+        if (right == geschw || richtungAngegeben == true) {
             return;
         }
         right = 0;
-        left = 10;
+        left = geschw;
         up = 0;
         down = 0;
         richtungAngegeben = true;
     }
     if (key.keyCode == "38") {
-        if (down == 10 || richtungAngegeben == true) {
+        if (down == geschw || richtungAngegeben == true) {
             return;
         }
         right = 0;
         left = 0;
-        up = 10;
+        up = geschw;
         down = 0;
         richtungAngegeben = true;
     }
     if (key.keyCode == "40") {
-        if (up == 10 || richtungAngegeben == true) {
+        if (up == geschw || richtungAngegeben == true) {
             return;
         }
         right = 0;
         left = 0;
         up = 0;
-        down = 10;
+        down = geschw;
         richtungAngegeben = true;
     }
 }
