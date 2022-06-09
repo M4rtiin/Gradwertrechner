@@ -18,6 +18,8 @@ function Navi() {
 //Varibel Sammlung
 var playerStandort = [300, 310];
 var playerStandortneu = [300, 310];
+var enemy1Standort = [10, 10];
+var enemy1Standortneu = [10, 10]; 
 var geschw = 5;
 var loose = false;
 var right = 0;
@@ -28,6 +30,10 @@ var rightAlt = 0;
 var leftAlt = 0;
 var upAlt = 0;
 var downAlt = 0;
+var rightEnemy1 = geschw;
+var leftEnemy1 = 0;
+var upEnemy1 = 0;
+var downEnemy1 = 0;
 var richtungAngegeben = true;
 var ersterStart = true;
 
@@ -58,6 +64,8 @@ const playerimg = new Image();
 playerimg.src = 'img/player.png';
 const mauerimg = new Image();
 mauerimg.src = 'img/mauer.png';
+const enemyimg = new Image();
+enemyimg.src = 'img/enemy.png';
 
 
 function gameloop() {
@@ -67,18 +75,18 @@ function gameloop() {
     }
 
     //Eigentlicher Gameloop
-    var myInterval = window.setInterval(game, 1000);
+    var myInterval = window.setInterval(game, 250);
 
     function game() {
         player();
         collide();
+        enemy1();
         draw();
         richtungAngegeben = false;
         if (loose) {
             clearTimeout(myInterval);
         }
-        console.log(playerStandort);
-        console.log(playerStandortneu);
+        console.log(enemy1Standort);
     }
 }
 
@@ -87,6 +95,56 @@ function player() {
         playerStandortneu.shift();
         playerStandortneu.push(playerStandort[0] + right - left);
         playerStandortneu.push(playerStandort[1] + down - up);
+}
+
+function enemy1() {
+    enemy1Standortneu.push(enemy1Standort[0] + rightEnemy1 - leftEnemy1);
+    enemy1Standortneu.push(enemy1Standort[1] + downEnemy1 - upEnemy1);
+    enemy1Standortneu.shift();
+    enemy1Standortneu.shift();
+
+    for (let i = 0; i < level1.length; i++) {
+        if (enemy1Standortneu[0] == level1[i][0] && enemy1Standortneu[1] == level1[i][1]
+            || enemy1Standortneu[0] + 5 == level1[i][0] && enemy1Standortneu[1] == level1[i][1]
+            || enemy1Standortneu[0] - 5 == level1[i][0] && enemy1Standortneu[1] == level1[i][1]
+            || enemy1Standortneu[0] == level1[i][0] && enemy1Standortneu[1] + 5 == level1[i][1]
+            || enemy1Standortneu[0] == level1[i][0] && enemy1Standortneu[1] - 5 == level1[i][1]) {
+            enemy1Standortneu.shift(); 
+            enemy1Standortneu.shift(); 
+            enemy1Standortneu.push(enemy1Standort[0]);
+            enemy1Standortneu.push(enemy1Standort[1]);
+            let zufall = Math.random() * 10;
+            if (zufall < 2.5) {
+                rightEnemy1 = geschw;
+                leftEnemy1 = 0;
+                downEnemy1 = 0;
+                upEnemy1 = 0;
+            }
+            else if (zufall > 2.5 && zufall < 5) {
+                rightEnemy1 = 0;
+                leftEnemy1 = geschw;
+                downEnemy1 = 0;
+                upEnemy1 = 0;
+            }
+            else if (zufall > 5 && zufall < 7.5) {
+                rightEnemy1 = 0;
+                leftEnemy1 = 0;
+                downEnemy1 = geschw;
+                upEnemy1 = 0;
+            }
+            else if (zufall > 7.5 && zufall < 10) {
+                rightEnemy1 = 0;
+                leftEnemy1 = 0;
+                downEnemy1 = 0;
+                upEnemy1 = geschw;
+            }
+            enemy1();
+        }
+    }
+    enemy1Standort.shift();
+    enemy1Standort.shift();
+    enemy1Standort.push(enemy1Standortneu[0]);
+    enemy1Standort.push(enemy1Standortneu[1]);
 }
 
 function collide() {
@@ -128,6 +186,7 @@ function draw() {
     }
 
     ctx.drawImage(playerimg, playerStandort[0], playerStandort[1]);
+    ctx.drawImage(enemyimg, enemy1Standort[0], enemy1Standort[1]);
 }
 
 function restart() {
