@@ -16,14 +16,18 @@ function Navi() {
 //Snake Game
 
 //Varibel Sammlung
-var playerStandortX = [0];
-var playerStandortY = [0];
+var playerStandort = [300, 310];
+var playerStandortneu = [300, 310];
 var geschw = 5;
 var loose = false;
 var right = 0;
 var left = 0;
 var up = 0;
-var down = geschw;
+var down = 0;
+var rightAlt = 0;
+var leftAlt = 0;
+var upAlt = 0;
+var downAlt = 0;
 var richtungAngegeben = true;
 var ersterStart = true;
 
@@ -63,23 +67,57 @@ function gameloop() {
     }
 
     //Eigentlicher Gameloop
-    var myInterval = window.setInterval(game, 250);
+    var myInterval = window.setInterval(game, 1000);
 
     function game() {
         player();
+        collide();
         draw();
         richtungAngegeben = false;
         if (loose) {
             clearTimeout(myInterval);
         }
+        console.log(playerStandort);
+        console.log(playerStandortneu);
     }
 }
 
 function player() {
-        playerStandortX.push(playerStandortX[0] + right - left);
-        playerStandortY.push(playerStandortY[0] + down - up);
-        playerStandortX.shift();
-        playerStandortY.shift();
+        playerStandortneu.shift();
+        playerStandortneu.shift();
+        playerStandortneu.push(playerStandort[0] + right - left);
+        playerStandortneu.push(playerStandort[1] + down - up);
+}
+
+function collide() {
+    for (let i = 0; i < level1.length; i++) {
+        if (playerStandortneu[0] == level1[i][0] && playerStandortneu[1] == level1[i][1]
+            || playerStandortneu[0] - 5 == level1[i][0] && playerStandortneu[1] == level1[i][1]
+            || playerStandortneu[0] + 5 == level1[i][0] && playerStandortneu[1] == level1[i][1]
+            || playerStandortneu[0] == level1[i][0] && playerStandortneu[1] + 5 == level1[i][1]
+            || playerStandortneu[0] == level1[i][0] && playerStandortneu[1] - 5 == level1[i][1]
+            || playerStandortneu[0] - 5 == level1[i][0] && playerStandortneu[1] - 5 == level1[i][1]
+            || playerStandortneu[0] - 5 == level1[i][0] && playerStandortneu[1] + 5 == level1[i][1]
+            || playerStandortneu[0] + 5 == level1[i][0] && playerStandortneu[1] - 5 == level1[i][1]
+            || playerStandortneu[0] + 5 == level1[i][0] && playerStandortneu[1] + 5 == level1[i][1]) {
+            right = rightAlt;
+            left = leftAlt;
+            up = upAlt;
+            down = downAlt;
+            player();
+            collide();
+            return
+        }
+    }
+
+    rightAlt = right;
+    leftAlt = left;
+    upAlt = up;
+    downAlt = down;
+    playerStandort.shift();
+    playerStandort.shift();
+    playerStandort.push(playerStandortneu[0]);
+    playerStandort.push(playerStandortneu[1]);
 }
 
 function draw() {
@@ -89,7 +127,7 @@ function draw() {
         ctx.drawImage(mauerimg, level1[i][0], level1[i][1]);
     }
 
-    ctx.drawImage(playerimg, playerStandortX[0], playerStandortY[0]);
+    ctx.drawImage(playerimg, playerStandort[0], playerStandort[1]);
 }
 
 function restart() {
