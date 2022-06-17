@@ -18,8 +18,7 @@ function Navi() {
 //Varibel Sammlung
 var playerStandort = [300, 310];
 var playerStandortneu = [300, 310];
-var enemy1Standort = [10, 10];
-var enemy1Standortneu = [10, 10]; 
+var enemy1Standort = [130, 140]; 
 var geschw = 5;
 var loose = false;
 var right = 0;
@@ -75,7 +74,7 @@ function gameloop() {
     }
 
     //Eigentlicher Gameloop
-    var myInterval = window.setInterval(game, 250);
+    var myInterval = window.setInterval(game, 50);
 
     function game() {
         player();
@@ -98,53 +97,183 @@ function player() {
 }
 
 function enemy1() {
-    enemy1Standortneu.push(enemy1Standort[0] + rightEnemy1 - leftEnemy1);
-    enemy1Standortneu.push(enemy1Standort[1] + downEnemy1 - upEnemy1);
-    enemy1Standortneu.shift();
-    enemy1Standortneu.shift();
 
-    for (let i = 0; i < level1.length; i++) {
-        if (enemy1Standortneu[0] == level1[i][0] && enemy1Standortneu[1] == level1[i][1]
-            || enemy1Standortneu[0] + 5 == level1[i][0] && enemy1Standortneu[1] == level1[i][1]
-            || enemy1Standortneu[0] - 5 == level1[i][0] && enemy1Standortneu[1] == level1[i][1]
-            || enemy1Standortneu[0] == level1[i][0] && enemy1Standortneu[1] + 5 == level1[i][1]
-            || enemy1Standortneu[0] == level1[i][0] && enemy1Standortneu[1] - 5 == level1[i][1]) {
-            enemy1Standortneu.shift(); 
-            enemy1Standortneu.shift(); 
-            enemy1Standortneu.push(enemy1Standort[0]);
-            enemy1Standortneu.push(enemy1Standort[1]);
+    collideTest();
+    abbiegeTest();
+
+    enemy1Standort.push(enemy1Standort[0] + rightEnemy1 - leftEnemy1);
+    enemy1Standort.push(enemy1Standort[1] + downEnemy1 - upEnemy1);
+    enemy1Standort.shift();
+    enemy1Standort.shift();
+
+    // Collide test
+    function collideTest() {
+        //Standortneu wird erstellt
+        let enemy1Standortneu = [];
+        enemy1Standortneu.push(enemy1Standort[0] + rightEnemy1 - leftEnemy1);
+        enemy1Standortneu.push(enemy1Standort[1] + downEnemy1 - upEnemy1);
+
+        for (let i = 0; i < level1.length; i++) {
+            if (enemy1Standortneu[0] == level1[i][0] && enemy1Standortneu[1] == level1[i][1]
+                || enemy1Standortneu[0] + 5 == level1[i][0] && enemy1Standortneu[1] == level1[i][1]
+                || enemy1Standortneu[0] - 5 == level1[i][0] && enemy1Standortneu[1] == level1[i][1]
+                || enemy1Standortneu[0] == level1[i][0] && enemy1Standortneu[1] + 5 == level1[i][1]
+                || enemy1Standortneu[0] == level1[i][0] && enemy1Standortneu[1] - 5 == level1[i][1]) {
+
+                if (rightEnemy1 == geschw || leftEnemy1 == geschw) {
+                        if (collideTest2(0, 0, geschw, 0)) {
+                            rightEnemy1 = 0;
+                            leftEnemy1 = 0;
+                            downEnemy1 = 0;
+                            upEnemy1 = geschw;
+                        }
+                        else  {
+                            rightEnemy1 = 0;
+                            leftEnemy1 = 0;
+                            downEnemy1 = geschw;
+                            upEnemy1 = 0;
+                        }
+                }
+                else if (downEnemy1 == geschw || upEnemy1 == geschw) {
+                        if (collideTest2(geschw, 0, 0, 0)) {
+                            rightEnemy1 = 0;
+                            leftEnemy1 = geschw;
+                            downEnemy1 = 0;
+                            upEnemy1 = 0;
+                        }
+                        else {
+                            rightEnemy1 = geschw;
+                            leftEnemy1 = 0;
+                            downEnemy1 = 0;
+                            upEnemy1 = 0;
+                        }
+                }
+            }
+        }
+    }
+
+    function abbiegeTest() {
+
+        let abbiegen = [];
+        let right = false;
+        let left = false;
+        let down = false;
+        let up = false;
+        let rightFrei = true;
+        let leftFrei = true;
+        let downFrei = true;
+        let upFrei = true;
+
+        //abbiegen Right
+        if (upEnemy1 == geschw || downEnemy1 == geschw) {
+            right = true;
+            abbiegen = [];
+            abbiegen.push(enemy1Standort[0] + 10);
+            abbiegen.push(enemy1Standort[1]);
+            for (let i = 0; i < level1.length; i++) {
+                if (abbiegen[0] == level1[i][0] && abbiegen[1] == level1[i][1]
+                    || abbiegen[0] == level1[i][0] && abbiegen[1] + 5 == level1[i][1]
+                    || abbiegen[0] == level1[i][0] && abbiegen[1] - 5 == level1[i][1]) {
+                    rightFrei = false;
+                }
+            }
+        }
+        //abbiegen Left
+        if (upEnemy1 == geschw || downEnemy1 == geschw) {
+            left = true;
+            abbiegen = [];
+            abbiegen.push(enemy1Standort[0] - 10);
+            abbiegen.push(enemy1Standort[1]);
+            for (let i = 0; i < level1.length; i++) {
+                if (abbiegen[0] == level1[i][0] && abbiegen[1] == level1[i][1]
+                    || abbiegen[0] == level1[i][0] && abbiegen[1] + 5 == level1[i][1]
+                    || abbiegen[0] == level1[i][0] && abbiegen[1] - 5 == level1[i][1]) {
+                    leftFrei = false;
+                }
+            }
+        }
+        //abbiegen Down
+        if (rightEnemy1 == geschw || leftEnemy1 == geschw) {
+            down = true;
+            abbiegen = [];
+            abbiegen.push(enemy1Standort[0]);
+            abbiegen.push(enemy1Standort[1] + 10);
+            for (let i = 0; i < level1.length; i++) {
+                if (abbiegen[0] == level1[i][0] && abbiegen[1] == level1[i][1]
+                    || abbiegen[0] + 5 == level1[i][0] && abbiegen[1] == level1[i][1]
+                    || abbiegen[0] - 5 == level1[i][0] && abbiegen[1] == level1[i][1]) {
+                    downFrei = false;
+                }
+            }
+        }
+        //abbiegen Up
+        if (rightEnemy1 == geschw || leftEnemy1 == geschw) {
+            up = true;
+            abbiegen = [];
+            abbiegen.push(enemy1Standort[0]);
+            abbiegen.push(enemy1Standort[1] - 10);
+            for (let i = 0; i < level1.length; i++) {
+                if (abbiegen[0] == level1[i][0] && abbiegen[1] == level1[i][1]
+                    || abbiegen[0] + 5 == level1[i][0] && abbiegen[1] == level1[i][1]
+                    || abbiegen[0] - 5 == level1[i][0] && abbiegen[1] == level1[i][1]) {
+                    upFrei = false;
+                }
+            }
+        }
+
+        if (right && rightFrei) {
             let zufall = Math.random() * 10;
-            if (zufall < 2.5) {
+            if (zufall < 5) {
                 rightEnemy1 = geschw;
                 leftEnemy1 = 0;
                 downEnemy1 = 0;
                 upEnemy1 = 0;
             }
-            else if (zufall > 2.5 && zufall < 5) {
+        }
+        if (left && leftFrei) {
+            let zufall = Math.random() * 10;
+            if (zufall < 5) {
                 rightEnemy1 = 0;
                 leftEnemy1 = geschw;
                 downEnemy1 = 0;
                 upEnemy1 = 0;
             }
-            else if (zufall > 5 && zufall < 7.5) {
+        }
+        if (down && downFrei) {
+            let zufall = Math.random() * 10;
+            if (zufall < 5) {
                 rightEnemy1 = 0;
                 leftEnemy1 = 0;
                 downEnemy1 = geschw;
                 upEnemy1 = 0;
             }
-            else if (zufall > 7.5 && zufall < 10) {
+        }
+        if (up && upFrei) {
+            let zufall = Math.random() * 10;
+            if (zufall < 5) {
                 rightEnemy1 = 0;
                 leftEnemy1 = 0;
                 downEnemy1 = 0;
                 upEnemy1 = geschw;
             }
-            enemy1();
         }
     }
-    enemy1Standort.shift();
-    enemy1Standort.shift();
-    enemy1Standort.push(enemy1Standortneu[0]);
-    enemy1Standort.push(enemy1Standortneu[1]);
+
+    function collideTest2(rightEnemy1, leftEnemy1, downEnemy1, upEnemy1) {
+        let enemy1Standortneu = [];
+        enemy1Standortneu.push(enemy1Standort[0] + rightEnemy1 - leftEnemy1);
+        enemy1Standortneu.push(enemy1Standort[1] + downEnemy1 - upEnemy1);
+
+        for (let i = 0; i < level1.length; i++) {
+            if (enemy1Standortneu[0] == level1[i][0] && enemy1Standortneu[1] == level1[i][1]
+                || enemy1Standortneu[0] + 5 == level1[i][0] && enemy1Standortneu[1] == level1[i][1]
+                || enemy1Standortneu[0] - 5 == level1[i][0] && enemy1Standortneu[1] == level1[i][1]
+                || enemy1Standortneu[0] == level1[i][0] && enemy1Standortneu[1] + 5 == level1[i][1]
+                || enemy1Standortneu[0] == level1[i][0] && enemy1Standortneu[1] - 5 == level1[i][1]) {
+                return true;
+            }
+        }
+    }
 }
 
 function collide() {
@@ -163,10 +292,12 @@ function collide() {
             up = upAlt;
             down = downAlt;
             player();
-            collide();
+           // collide();
             return
         }
     }
+
+
 
     rightAlt = right;
     leftAlt = left;
