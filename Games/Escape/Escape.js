@@ -18,7 +18,8 @@ function Navi() {
 //Varibel Sammlung
 var playerStandort = [300, 310];
 var playerStandortneu = [300, 310];
-var enemy1Standort = [130, 140]; 
+var enemy1Standort = [10, 10]; 
+var enemy2Standort = [10, 10]; 
 var geschw = 5;
 var loose = false;
 var right = 0;
@@ -33,6 +34,10 @@ var rightEnemy1 = geschw;
 var leftEnemy1 = 0;
 var upEnemy1 = 0;
 var downEnemy1 = 0;
+var rightEnemy2 = 0;
+var leftEnemy2 = 0;
+var upEnemy2 = 0;
+var downEnemy2 = geschw;
 var richtungAngegeben = true;
 var ersterStart = true;
 
@@ -74,13 +79,16 @@ function gameloop() {
     }
 
     //Eigentlicher Gameloop
-    var myInterval = window.setInterval(game, 50);
+    var myInterval = window.setInterval(game, 250);
 
     function game() {
         player();
         collide();
+        checkWinLoose();
         enemy1();
+        enemy2();
         draw();
+        checkWinLoose();
         richtungAngegeben = false;
         if (loose) {
             clearTimeout(myInterval);
@@ -98,8 +106,8 @@ function player() {
 
 function enemy1() {
 
-    collideTest();
     abbiegeTest();
+    collideTest();
 
     enemy1Standort.push(enemy1Standort[0] + rightEnemy1 - leftEnemy1);
     enemy1Standort.push(enemy1Standort[1] + downEnemy1 - upEnemy1);
@@ -118,35 +126,75 @@ function enemy1() {
                 || enemy1Standortneu[0] + 5 == level1[i][0] && enemy1Standortneu[1] == level1[i][1]
                 || enemy1Standortneu[0] - 5 == level1[i][0] && enemy1Standortneu[1] == level1[i][1]
                 || enemy1Standortneu[0] == level1[i][0] && enemy1Standortneu[1] + 5 == level1[i][1]
-                || enemy1Standortneu[0] == level1[i][0] && enemy1Standortneu[1] - 5 == level1[i][1]) {
+                || enemy1Standortneu[0] == level1[i][0] && enemy1Standortneu[1] - 5 == level1[i][1]
+                || enemy1Standortneu[0] == 5 && enemy1Standortneu[1] == 10
+                || enemy1Standortneu[0] == 300 && enemy1Standortneu[1] == 305) {
 
                 if (rightEnemy1 == geschw || leftEnemy1 == geschw) {
-                        if (collideTest2(0, 0, geschw, 0)) {
-                            rightEnemy1 = 0;
-                            leftEnemy1 = 0;
-                            downEnemy1 = 0;
-                            upEnemy1 = geschw;
-                        }
-                        else  {
+                    if (collideTest2(0, 0, geschw, 0) && collideTest2(0, 0, 0, geschw)) {
+                        let zufall = Math.random() * 10;
+                        if (zufall < 5) {
                             rightEnemy1 = 0;
                             leftEnemy1 = 0;
                             downEnemy1 = geschw;
                             upEnemy1 = 0;
-                        }
-                }
-                else if (downEnemy1 == geschw || upEnemy1 == geschw) {
-                        if (collideTest2(geschw, 0, 0, 0)) {
-                            rightEnemy1 = 0;
-                            leftEnemy1 = geschw;
-                            downEnemy1 = 0;
-                            upEnemy1 = 0;
+                            console.log("1");
                         }
                         else {
+                            rightEnemy1 = 0;
+                            leftEnemy1 = 0;
+                            downEnemy1 = 0;
+                            upEnemy1 = geschw;
+                            console.log("2");
+                        }
+                    }
+                    else if (collideTest2(0, 0, geschw, 0)) {
+                        rightEnemy1 = 0;
+                        leftEnemy1 = 0;
+                        downEnemy1 = geschw;
+                        upEnemy1 = 0;
+                        console.log("3");
+                    }
+                    else if (collideTest2(0, 0, 0, geschw)) {
+                        rightEnemy1 = 0;
+                        leftEnemy1 = 0;
+                        downEnemy1 = 0;
+                        upEnemy1 = geschw;
+                        console.log("4");
+                    }
+                }
+                else if (downEnemy1 == geschw || upEnemy1 == geschw) {
+                    if (collideTest2(geschw, 0, 0, 0) && collideTest2(0, geschw, 0, 0)) {
+                        let zufall = Math.random() * 10;
+                        if (zufall < 5) {
                             rightEnemy1 = geschw;
                             leftEnemy1 = 0;
                             downEnemy1 = 0;
                             upEnemy1 = 0;
+                            console.log("5");
                         }
+                        else {
+                            rightEnemy1 = 0;
+                            leftEnemy1 = geschw;
+                            downEnemy1 = 0;
+                            upEnemy1 = 0;
+                            console.log("6");
+                        }
+                    }
+                    else if (collideTest2(geschw, 0, 0, 0)) {
+                        rightEnemy1 = geschw;
+                        leftEnemy1 = 0;
+                        downEnemy1 = 0;
+                        upEnemy1 = 0;
+                        console.log("7");
+                    }
+                    else if (collideTest2(0, geschw, 0, 0)) {
+                        rightEnemy1 = 0;
+                        leftEnemy1 = geschw;
+                        downEnemy1 = 0;
+                        upEnemy1 = 0;
+                        console.log("8");
+                    }
                 }
             }
         }
@@ -269,10 +317,236 @@ function enemy1() {
                 || enemy1Standortneu[0] + 5 == level1[i][0] && enemy1Standortneu[1] == level1[i][1]
                 || enemy1Standortneu[0] - 5 == level1[i][0] && enemy1Standortneu[1] == level1[i][1]
                 || enemy1Standortneu[0] == level1[i][0] && enemy1Standortneu[1] + 5 == level1[i][1]
-                || enemy1Standortneu[0] == level1[i][0] && enemy1Standortneu[1] - 5 == level1[i][1]) {
-                return true;
+                || enemy1Standortneu[0] == level1[i][0] && enemy1Standortneu[1] - 5 == level1[i][1]
+                || enemy1Standortneu[0] == 5 && enemy1Standortneu[1] == 10
+                || enemy1Standortneu[0] == 300 && enemy1Standortneu[1] == 305) {
+                return false;
             }
         }
+        return true;
+    }
+}
+
+function enemy2() {
+
+    abbiegeTest();
+    collideTest();
+
+    enemy2Standort.push(enemy2Standort[0] + rightEnemy2 - leftEnemy2);
+    enemy2Standort.push(enemy2Standort[1] + downEnemy2 - upEnemy2);
+    enemy2Standort.shift();
+    enemy2Standort.shift();
+
+    // Collide test
+    function collideTest() {
+        //Standortneu wird erstellt
+        let enemy2Standortneu = [];
+        enemy2Standortneu.push(enemy2Standort[0] + rightEnemy2 - leftEnemy2);
+        enemy2Standortneu.push(enemy2Standort[1] + downEnemy2 - upEnemy2);
+
+        for (let i = 0; i < level1.length; i++) {
+            if (enemy2Standortneu[0] == level1[i][0] && enemy2Standortneu[1] == level1[i][1]
+                || enemy2Standortneu[0] + 5 == level1[i][0] && enemy2Standortneu[1] == level1[i][1]
+                || enemy2Standortneu[0] - 5 == level1[i][0] && enemy2Standortneu[1] == level1[i][1]
+                || enemy2Standortneu[0] == level1[i][0] && enemy2Standortneu[1] + 5 == level1[i][1]
+                || enemy2Standortneu[0] == level1[i][0] && enemy2Standortneu[1] - 5 == level1[i][1]
+                || enemy2Standortneu[0] == 5 && enemy2Standortneu[1] == 10
+                || enemy2Standortneu[0] == 300 && enemy2Standortneu[1] == 305) {
+
+                if (rightEnemy2 == geschw || leftEnemy2 == geschw) {
+                    if (collideTest2(0, 0, geschw, 0) && collideTest2(0, 0, 0, geschw)) {
+                        let zufall = Math.random() * 10;
+                        if (zufall < 5) {
+                            rightEnemy2 = 0;
+                            leftEnemy2 = 0;
+                            downEnemy2 = geschw;
+                            upEnemy2 = 0;
+                            console.log("1");
+                        }
+                        else {
+                            rightEnemy2 = 0;
+                            leftEnemy2 = 0;
+                            downEnemy2 = 0;
+                            upEnemy2 = geschw;
+                            console.log("2");
+                        }
+                    }
+                    else if (collideTest2(0, 0, geschw, 0)) {
+                        rightEnemy2 = 0;
+                        leftEnemy2 = 0;
+                        downEnemy2 = geschw;
+                        upEnemy2 = 0;
+                        console.log("3");
+                    }
+                    else if (collideTest2(0, 0, 0, geschw)) {
+                        rightEnemy2 = 0;
+                        leftEnemy2 = 0;
+                        downEnemy2 = 0;
+                        upEnemy2 = geschw;
+                        console.log("4");
+                    }
+                }
+                else if (downEnemy2 == geschw || upEnemy2 == geschw) {
+                    if (collideTest2(geschw, 0, 0, 0) && collideTest2(0, geschw, 0, 0)) {
+                        let zufall = Math.random() * 10;
+                        if (zufall < 5) {
+                            rightEnemy2 = geschw;
+                            leftEnemy2 = 0;
+                            downEnemy2 = 0;
+                            upEnemy2 = 0;
+                            console.log("5");
+                        }
+                        else {
+                            rightEnemy2 = 0;
+                            leftEnemy2 = geschw;
+                            downEnemy2 = 0;
+                            upEnemy2 = 0;
+                            console.log("6");
+                        }
+                    }
+                    else if (collideTest2(geschw, 0, 0, 0)) {
+                        rightEnemy2 = geschw;
+                        leftEnemy2 = 0;
+                        downEnemy2 = 0;
+                        upEnemy2 = 0;
+                        console.log("7");
+                    }
+                    else if (collideTest2(0, geschw, 0, 0)) {
+                        rightEnemy2 = 0;
+                        leftEnemy2 = geschw;
+                        downEnemy2 = 0;
+                        upEnemy2 = 0;
+                        console.log("8");
+                    }
+                }
+            }
+        }
+    }
+
+    function abbiegeTest() {
+
+        let abbiegen = [];
+        let right = false;
+        let left = false;
+        let down = false;
+        let up = false;
+        let rightFrei = true;
+        let leftFrei = true;
+        let downFrei = true;
+        let upFrei = true;
+
+        //abbiegen Right
+        if (upEnemy2 == geschw || downEnemy2 == geschw) {
+            right = true;
+            abbiegen = [];
+            abbiegen.push(enemy2Standort[0] + 10);
+            abbiegen.push(enemy2Standort[1]);
+            for (let i = 0; i < level1.length; i++) {
+                if (abbiegen[0] == level1[i][0] && abbiegen[1] == level1[i][1]
+                    || abbiegen[0] == level1[i][0] && abbiegen[1] + 5 == level1[i][1]
+                    || abbiegen[0] == level1[i][0] && abbiegen[1] - 5 == level1[i][1]) {
+                    rightFrei = false;
+                }
+            }
+        }
+        //abbiegen Left
+        if (upEnemy2 == geschw || downEnemy2 == geschw) {
+            left = true;
+            abbiegen = [];
+            abbiegen.push(enemy2Standort[0] - 10);
+            abbiegen.push(enemy2Standort[1]);
+            for (let i = 0; i < level1.length; i++) {
+                if (abbiegen[0] == level1[i][0] && abbiegen[1] == level1[i][1]
+                    || abbiegen[0] == level1[i][0] && abbiegen[1] + 5 == level1[i][1]
+                    || abbiegen[0] == level1[i][0] && abbiegen[1] - 5 == level1[i][1]) {
+                    leftFrei = false;
+                }
+            }
+        }
+        //abbiegen Down
+        if (rightEnemy2 == geschw || leftEnemy2 == geschw) {
+            down = true;
+            abbiegen = [];
+            abbiegen.push(enemy2Standort[0]);
+            abbiegen.push(enemy2Standort[1] + 10);
+            for (let i = 0; i < level1.length; i++) {
+                if (abbiegen[0] == level1[i][0] && abbiegen[1] == level1[i][1]
+                    || abbiegen[0] + 5 == level1[i][0] && abbiegen[1] == level1[i][1]
+                    || abbiegen[0] - 5 == level1[i][0] && abbiegen[1] == level1[i][1]) {
+                    downFrei = false;
+                }
+            }
+        }
+        //abbiegen Up
+        if (rightEnemy2 == geschw || leftEnemy2 == geschw) {
+            up = true;
+            abbiegen = [];
+            abbiegen.push(enemy2Standort[0]);
+            abbiegen.push(enemy2Standort[1] - 10);
+            for (let i = 0; i < level1.length; i++) {
+                if (abbiegen[0] == level1[i][0] && abbiegen[1] == level1[i][1]
+                    || abbiegen[0] + 5 == level1[i][0] && abbiegen[1] == level1[i][1]
+                    || abbiegen[0] - 5 == level1[i][0] && abbiegen[1] == level1[i][1]) {
+                    upFrei = false;
+                }
+            }
+        }
+
+        if (right && rightFrei) {
+            let zufall = Math.random() * 10;
+            if (zufall < 5) {
+                rightEnemy2 = geschw;
+                leftEnemy2 = 0;
+                downEnemy2 = 0;
+                upEnemy2 = 0;
+            }
+        }
+        if (left && leftFrei) {
+            let zufall = Math.random() * 10;
+            if (zufall < 5) {
+                rightEnemy2 = 0;
+                leftEnemy2 = geschw;
+                downEnemy2 = 0;
+                upEnemy2 = 0;
+            }
+        }
+        if (down && downFrei) {
+            let zufall = Math.random() * 10;
+            if (zufall < 5) {
+                rightEnemy2 = 0;
+                leftEnemy2 = 0;
+                downEnemy2 = geschw;
+                upEnemy2 = 0;
+            }
+        }
+        if (up && upFrei) {
+            let zufall = Math.random() * 10;
+            if (zufall < 5) {
+                rightEnemy2 = 0;
+                leftEnemy2 = 0;
+                downEnemy2 = 0;
+                upEnemy2 = geschw;
+            }
+        }
+    }
+
+    function collideTest2(rightEnemy2, leftEnemy2, downEnemy2, upEnemy2) {
+        let enemy2Standortneu = [];
+        enemy2Standortneu.push(enemy2Standort[0] + rightEnemy2 - leftEnemy2);
+        enemy2Standortneu.push(enemy2Standort[1] + downEnemy2 - upEnemy2);
+
+        for (let i = 0; i < level1.length; i++) {
+            if (enemy2Standortneu[0] == level1[i][0] && enemy2Standortneu[1] == level1[i][1]
+                || enemy2Standortneu[0] + 5 == level1[i][0] && enemy2Standortneu[1] == level1[i][1]
+                || enemy2Standortneu[0] - 5 == level1[i][0] && enemy2Standortneu[1] == level1[i][1]
+                || enemy2Standortneu[0] == level1[i][0] && enemy2Standortneu[1] + 5 == level1[i][1]
+                || enemy2Standortneu[0] == level1[i][0] && enemy2Standortneu[1] - 5 == level1[i][1]
+                || enemy2Standortneu[0] == 5 && enemy2Standortneu[1] == 10
+                || enemy2Standortneu[0] == 300 && enemy2Standortneu[1] == 305) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 
@@ -318,6 +592,7 @@ function draw() {
 
     ctx.drawImage(playerimg, playerStandort[0], playerStandort[1]);
     ctx.drawImage(enemyimg, enemy1Standort[0], enemy1Standort[1]);
+    ctx.drawImage(enemyimg, enemy2Standort[0], enemy2Standort[1]);
 }
 
 function restart() {
@@ -348,4 +623,15 @@ function firstStart() {
     startButton.remove();
     document.getElementById("restart").style.visibility = "visible";
 
+}
+
+function checkWinLoose() {
+    if (playerStandort[0] == enemy1Standort[0] && playerStandort[1] == enemy1Standort[1]
+        || playerStandort[0] == enemy2Standort[0] && playerStandort[1] == enemy2Standort[1] ) {
+        loose = true;
+        window.alert("Loose!");
+    }
+    if (playerStandort[0] == 0 && playerStandort[1] == 10) {
+        window.alert("Win!");
+    }
 }
